@@ -26,7 +26,7 @@ export default function ServiceAreaSection() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-accent">
               <iframe
                 title="Patrick Holy GmbH Standort Aschaffenburg"
-                src="https://www.google.com/maps?q=Patrick+Holy+GmbH+Feldchenstra%C3%9Fe+114+Aschaffenburg&output=embed"
+                src="https://www.google.com/maps?q=Landkreis+Aschaffenburg,+Bayern&z=10&output=embed"
                 className="w-full h-[450px] border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
