@@ -16,7 +16,7 @@ export default function TrustSection() {
             data-testid="badge-dvgw"
           >
             <div
-              className="h-28 md:h-32 flex items-end justify-center"
+              className="h-28 md:h-32 flex items-center md:items-end justify-center"
               style={{ filter: "brightness(0) invert(1) drop-shadow(0 4px 6px rgba(0,0,0,0.4))" }}
             >
               <img
@@ -39,7 +39,7 @@ export default function TrustSection() {
             data-testid="badge-tuv"
           >
             <div
-              className="h-28 md:h-32 flex items-end justify-center"
+              className="h-28 md:h-32 flex items-center md:items-end justify-center"
               style={{ filter: "brightness(0) invert(1) drop-shadow(0 4px 6px rgba(0,0,0,0.4))" }}
             >
               <img
@@ -61,9 +61,9 @@ export default function TrustSection() {
             className="flex flex-col items-center justify-center text-center gap-3"
             data-testid="badge-bereitschaft"
           >
-            <div className="relative h-28 md:h-32 flex items-end justify-center">
-              {/* Pulsing ring */}
-              <span className="absolute bottom-0 inline-flex h-20 w-20 md:h-24 md:w-24 rounded-full bg-accent/20 animate-ping" />
+            <div className="relative h-28 md:h-32 flex items-center md:items-end justify-center">
+              <div className="relative h-20 w-20 md:h-24 md:w-24">
+                <span className="absolute inset-0 inline-flex rounded-full bg-accent/20 animate-ping" />
               <div
                 className="relative h-20 w-20 md:h-24 md:w-24 rounded-full flex items-center justify-center"
                 style={{
@@ -78,6 +78,7 @@ export default function TrustSection() {
                   <div className="w-10 h-px bg-[#213d86]/60 mx-auto my-1" />
                   <div className="font-extrabold text-[18px] md:text-[20px] text-[#213d86] tracking-tight">24h</div>
                 </div>
+              </div>
               </div>
             </div>
             <h3 className="text-white font-bold text-base md:text-lg tracking-wide">Notfall-Bereitschaft</h3>
@@ -97,7 +98,7 @@ export default function TrustSection() {
             data-testid="badge-google"
           >
             <div
-              className="h-28 md:h-32 flex items-end justify-center gap-3 group-hover:scale-105 transition-transform pb-1"
+              className="h-28 md:h-32 flex items-center md:items-end justify-center gap-3 group-hover:scale-105 transition-transform md:pb-1"
               style={{ filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.35))" }}
             >
               <svg viewBox="0 0 24 24" className="w-12 h-12 md:w-14 md:h-14" aria-hidden="true">
