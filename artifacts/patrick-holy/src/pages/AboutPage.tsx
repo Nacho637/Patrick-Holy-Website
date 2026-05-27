@@ -1,9 +1,40 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { Users, CheckCircle2, Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { companyData } from "@/data/company";
+
+const STATS = [
+  "365 Tage Bereitschaft",
+  "DVGW + TÜV zertifiziert",
+  "Eigene Werkstatt",
+];
+
+function StatsCarousel() {
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setIdx((i) => (i + 1) % STATS.length), 3000);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <div className="relative h-7 overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={idx}
+          initial={{ x: 40, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -40, opacity: 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="absolute inset-0 flex items-center justify-center text-center font-bold text-base whitespace-nowrap"
+        >
+          {STATS[idx]}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export default function AboutPage() {
   return (
@@ -33,9 +64,12 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Strip */}
-      <div className="bg-accent text-accent-foreground py-8">
+      <div className="bg-accent text-accent-foreground py-4 md:py-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16 text-center font-bold text-lg md:text-xl">
+          <div className="md:hidden">
+            <StatsCarousel />
+          </div>
+          <div className="hidden md:flex flex-wrap justify-center gap-8 md:gap-16 text-center font-bold text-lg md:text-xl">
             <div>365 Tage Bereitschaft</div>
             <div className="hidden md:block w-1.5 h-1.5 rounded-full bg-primary/30 my-auto" />
             <div>DVGW + TÜV zertifiziert</div>

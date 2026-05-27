@@ -3,7 +3,7 @@ import {
   Phone,
   Mail,
   MapPin,
-  ChevronRight,
+  X,
   Construction,
   Info,
   Briefcase,
@@ -75,7 +75,7 @@ export default function Header() {
           <img
             src="/images/logo.png"
             alt={companyData.name}
-            className={`h-12 w-auto transition-all ${transparent ? "drop-shadow-lg" : ""}`}
+            className={`h-9 md:h-12 w-auto transition-all ${transparent ? "drop-shadow-lg" : ""}`}
           />
         </Link>
 
@@ -145,7 +145,7 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-[88vw] sm:w-[400px] p-0 border-0 bg-[#213d86] text-white flex flex-col [&>button]:hidden"
+              className="w-[78vw] max-w-[320px] p-0 border-0 bg-[#213d86] text-white flex flex-col [&>button]:hidden"
             >
               <div
                 className="absolute inset-0 pointer-events-none opacity-[0.07]"
@@ -154,21 +154,15 @@ export default function Header() {
                     "repeating-linear-gradient(135deg, #ffffff 0 1px, transparent 1px 14px)",
                 }}
               />
-              <div className="relative flex items-center justify-between px-6 h-20 border-b border-white/10">
-                <Link
-                  href="/"
+              <div className="relative flex items-center justify-between px-4 h-20 border-b border-white/10">
+                <button
+                  type="button"
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-center"
+                  aria-label="Menü schließen"
+                  className="w-11 h-11 flex items-center justify-center rounded-md text-white hover:bg-white/10 transition-colors"
                 >
-                  <img
-                    src="/images/logo.png"
-                    alt={companyData.name}
-                    className="h-10 w-auto"
-                  />
-                </Link>
-                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent">
-                  Menü
-                </span>
+                  <X className="w-6 h-6" strokeWidth={2.5} />
+                </button>
               </div>
 
               <nav className="relative flex-1 overflow-y-auto px-3 py-6">
@@ -201,7 +195,6 @@ export default function Header() {
                           <span className="flex-1 font-semibold text-base tracking-wide">
                             {link.label}
                           </span>
-                          <ChevronRight className="w-4 h-4 text-white/40 group-hover:text-accent transition-colors" />
                         </Link>
                       </li>
                     );
