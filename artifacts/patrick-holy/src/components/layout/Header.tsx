@@ -146,18 +146,22 @@ export default function Header() {
               >
                 <span className="relative block w-6 h-[18px]">
                   <span
-                    className={`absolute left-0 right-0 h-[2px] bg-current transition-all duration-300 ease-out ${
-                      menuOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
+                    className={`absolute left-0 right-0 h-[2px] bg-current will-change-transform transition-[top,bottom,transform] duration-[450ms] [transition-timing-function:cubic-bezier(0.65,0,0.35,1)] ${
+                      menuOpen
+                        ? "top-1/2 -translate-y-1/2 rotate-45 [transition-delay:120ms]"
+                        : "top-0 rotate-0 [transition-delay:0ms]"
                     }`}
                   />
                   <span
-                    className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-current transition-all duration-200 ${
-                      menuOpen ? "opacity-0 scale-x-0" : "opacity-100"
+                    className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-current transition-[opacity,transform] duration-150 ease-out origin-center ${
+                      menuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100 delay-150"
                     }`}
                   />
                   <span
-                    className={`absolute left-0 right-0 h-[2px] bg-current transition-all duration-300 ease-out ${
-                      menuOpen ? "bottom-1/2 translate-y-1/2 -rotate-45" : "bottom-0"
+                    className={`absolute left-0 right-0 h-[2px] bg-current will-change-transform transition-[top,bottom,transform] duration-[450ms] [transition-timing-function:cubic-bezier(0.65,0,0.35,1)] ${
+                      menuOpen
+                        ? "bottom-1/2 translate-y-1/2 -rotate-45 [transition-delay:120ms]"
+                        : "bottom-0 rotate-0 [transition-delay:0ms]"
                     }`}
                   />
                 </span>
@@ -174,14 +178,17 @@ export default function Header() {
                     "repeating-linear-gradient(135deg, #ffffff 0 1px, transparent 1px 14px)",
                 }}
               />
-              <div className="relative flex items-center justify-between px-4 h-20 border-b border-white/10">
+              <div className="relative flex items-center justify-end px-4 h-20 border-b border-white/10">
                 <button
                   type="button"
                   onClick={() => setMenuOpen(false)}
                   aria-label="Menü schließen"
-                  className="w-11 h-11 flex items-center justify-center rounded-md text-white hover:bg-white/10 transition-colors"
+                  className="relative w-11 h-11 flex items-center justify-center rounded-md text-white hover:bg-white/10 transition-colors"
                 >
-                  <X className="w-6 h-6" strokeWidth={2.5} />
+                  <span className="relative block w-6 h-[18px]">
+                    <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-current rotate-45" />
+                    <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-current -rotate-45" />
+                  </span>
                 </button>
               </div>
 
