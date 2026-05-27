@@ -61,7 +61,7 @@ export default function CareerPage() {
             alt="Team und Fuhrpark der Patrick Holy GmbH"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#213d86]/95 via-[#213d86]/70 to-[#213d86]/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#213d86]/95 from-30% via-[#213d86]/40 via-60% to-transparent" />
         </div>
         <div className="container mx-auto px-4 relative z-10 pb-16 md:pb-20">
           <motion.div
