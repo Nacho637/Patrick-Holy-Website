@@ -49,7 +49,9 @@ export default function SectionHeader({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto text-center"
+          className={`mt-6 text-lg text-muted-foreground max-w-3xl ${
+            isCenter ? "mx-auto text-center" : ""
+          }`}
         >
           {children}
         </motion.div>
