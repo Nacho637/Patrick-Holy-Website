@@ -69,10 +69,6 @@ export default function CareerPage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl text-white"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-accent-foreground font-semibold text-sm mb-6">
-              <Users className="w-4 h-4" />
-              KARRIERE BEI PATRICK HOLY
-            </div>
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-lg">
               Werde Teil unseres Teams
             </h1>
