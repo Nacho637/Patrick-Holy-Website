@@ -25,7 +25,7 @@ export default function TrustSection() {
                 className="max-h-full w-auto object-contain"
               />
             </div>
-            <h3 className="text-white font-bold text-base md:text-lg tracking-wide">DVGW GW 301</h3>
+            <h3 className="text-white font-bold text-base md:text-lg tracking-wide min-h-[1.75rem] md:min-h-0 flex items-start justify-center">DVGW GW 301</h3>
             <p className="text-blue-200 text-xs">Rohrleitungsbau zertifiziert</p>
           </motion.div>
 
@@ -48,7 +48,7 @@ export default function TrustSection() {
                 className="max-h-full w-auto object-contain"
               />
             </div>
-            <h3 className="text-white font-bold text-base md:text-lg tracking-wide">TÜV Geprüft</h3>
+            <h3 className="text-white font-bold text-base md:text-lg tracking-wide min-h-[1.75rem] md:min-h-0 flex items-start justify-center">TÜV Geprüft</h3>
             <p className="text-blue-200 text-xs">Geprüfte Qualität & Sicherheit</p>
           </motion.div>
 
@@ -81,7 +81,7 @@ export default function TrustSection() {
               </div>
               </div>
             </div>
-            <h3 className="text-white font-bold text-base md:text-lg tracking-wide">Notfall-Bereitschaft</h3>
+            <h3 className="text-white font-bold text-base md:text-lg tracking-wide min-h-[1.75rem] md:min-h-0 flex items-start justify-center">Notfall-Bereitschaft</h3>
             <p className="text-blue-200 text-xs">Wir sind immer für Sie da</p>
           </motion.div>
 
@@ -127,7 +127,7 @@ export default function TrustSection() {
                 <span className="text-blue-200 text-[10px] uppercase tracking-wider mt-1">Google</span>
               </div>
             </div>
-            <h3 className="text-white font-bold text-base md:text-lg tracking-wide">Top Bewertungen</h3>
+            <h3 className="text-white font-bold text-base md:text-lg tracking-wide min-h-[1.75rem] md:min-h-0 flex items-start justify-center">Top Bewertungen</h3>
             <p className="text-blue-200 text-xs underline-offset-2 group-hover:underline">
               Bewertungen ansehen →
             </p>
