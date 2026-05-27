@@ -40,7 +40,7 @@ export default function AboutPage() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="bg-primary text-white py-20 md:py-32 relative overflow-hidden">
+      <section data-hero className="bg-primary text-white py-20 md:py-32 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 mix-blend-overlay">
           <img src="/images/hero-baustelle.png" alt="" className="w-full h-full object-cover" />
         </div>

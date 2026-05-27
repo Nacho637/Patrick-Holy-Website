@@ -54,7 +54,7 @@ export default function CareerPage() {
   return (
     <div className="w-full">
       {/* Hero with team photo */}
-      <section className="relative h-[60vh] min-h-[460px] flex items-end overflow-hidden">
+      <section data-hero className="relative h-[60vh] min-h-[460px] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="/images/team-fuhrpark.jpg"

@@ -112,7 +112,7 @@ export default function ContactPage() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="bg-primary text-white py-20 relative">
+      <section data-hero className="bg-primary text-white py-20 relative">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Kontakt & Anfrage</h1>
           <p className="text-xl text-blue-100">

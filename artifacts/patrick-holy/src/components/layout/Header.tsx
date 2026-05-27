@@ -38,12 +38,32 @@ export default function Header() {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
+    let observer: IntersectionObserver | null = null;
+    let cancelled = false;
+
+    const attach = () => {
+      if (cancelled) return;
+      const hero = document.querySelector<HTMLElement>("[data-hero]");
+      if (!hero) {
+        setScrolled(true);
+        return;
+      }
+      setScrolled(false);
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          setScrolled(!entry.isIntersecting);
+        },
+        { rootMargin: "-80px 0px 0px 0px", threshold: 0 },
+      );
+      observer.observe(hero);
     };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const raf = requestAnimationFrame(attach);
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(raf);
+      observer?.disconnect();
+    };
   }, [location]);
 
   const navLinks = [
