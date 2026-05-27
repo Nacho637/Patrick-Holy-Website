@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight, HardHat } from "lucide-react";
+import { Phone, ArrowRight } from "lucide-react";
 import { companyData } from "@/data/company";
 
 export default function HeroSection() {
@@ -26,9 +26,6 @@ export default function HeroSection() {
           className="max-w-4xl mx-auto"
         >
           <div className="inline-flex items-stretch mb-8 shadow-xl shadow-black/30 rounded-md overflow-hidden border border-white/15 backdrop-blur-md">
-            <div className="flex items-center justify-center bg-accent px-3 py-2.5">
-              <HardHat className="w-5 h-5 text-accent-foreground" strokeWidth={2.5} />
-            </div>
             <div
               className="flex items-center gap-2.5 px-4 py-2.5 bg-white/10"
               style={{
