@@ -34,18 +34,6 @@ export default function Footer() {
                 </div>
               </li>
               <li className="flex items-center gap-3 text-blue-100">
-                <Phone className="w-5 h-5 text-accent shrink-0" />
-                <div>
-                  <a
-                    href={`tel:${companyData.contact.phone.replace(/[\s/-]/g, "")}`}
-                    className="hover:text-white transition-colors"
-                  >
-                    {companyData.contact.phone}
-                  </a>
-                  <p className="text-xs opacity-80">Fax: {companyData.contact.fax}</p>
-                </div>
-              </li>
-              <li className="flex items-center gap-3 text-blue-100">
                 <Mail className="w-5 h-5 text-accent shrink-0" />
                 <a
                   href={`mailto:${companyData.contact.email}`}
