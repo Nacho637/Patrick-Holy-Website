@@ -21,11 +21,14 @@ export default function PressCard({ article }: PressCardProps) {
     >
       <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 group-hover:shadow-2xl group-hover:-translate-y-1 transition-all duration-300">
         {/* Newspaper-style header bar */}
-        <div className="bg-gradient-to-r from-[#c8102e] to-[#a00d24] text-white px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="bg-white text-[#c8102e] font-black text-sm md:text-base px-2 py-0.5 tracking-tight italic">
-              Main-Echo
-            </div>
+        <div className="bg-[#01649d] text-white px-6 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <img
+              src="/images/main-echo-logo.png"
+              alt="Main-Echo"
+              className="h-7 md:h-8 w-auto"
+              style={{ filter: "brightness(0) invert(1)" }}
+            />
             <span className="text-xs md:text-sm text-white/90 font-medium hidden sm:inline">
               Online-Ausgabe · {article.date}
             </span>

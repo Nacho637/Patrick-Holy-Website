@@ -220,16 +220,6 @@ export default function ContactPage() {
                   <div className="w-full h-px bg-gray-100" />
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-extrabold text-lg shrink-0">
-                      RR
-                    </div>
-                    <div>
-                      <p className="font-bold text-lg">Reiner Reisnecker</p>
-                      <p className="text-sm text-muted-foreground">Zweiter Geschäftsführer</p>
-                    </div>
-                  </div>
-                  <div className="w-full h-px bg-gray-100" />
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-extrabold text-lg shrink-0">
                       AS
                     </div>
                     <div>
@@ -253,14 +243,7 @@ export default function ContactPage() {
             {/* Right Col: Form */}
             <div className="lg:col-span-3">
               <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-40 h-40 bg-accent/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full translate-y-1/2 -translate-x-1/2" />
-
                 <div className="relative">
-                  <div className="inline-flex items-center gap-2 bg-accent text-accent-foreground text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
-                    <Send className="w-3 h-3" />
-                    Anfrage senden
-                  </div>
                   <h2 className="text-3xl md:text-4xl font-extrabold mb-3">Schreiben Sie uns</h2>
                   <p className="text-muted-foreground mb-10 text-lg">
                     Beschreiben Sie uns Ihr Anliegen — wir melden uns schnellstmöglich zurück.
@@ -352,7 +335,7 @@ export default function ContactPage() {
                                     data-testid={`button-service-${svc.value}`}
                                     className={`group relative flex flex-col items-center justify-center gap-2 p-4 rounded-2xl border-2 transition-all text-center min-h-[100px] ${
                                       active
-                                        ? "border-primary bg-primary text-white shadow-lg scale-[1.02]"
+                                        ? "border-primary bg-primary shadow-lg scale-[1.02]"
                                         : "border-gray-200 bg-white text-foreground hover:border-primary/40 hover:bg-primary/5"
                                     }`}
                                   >
@@ -361,14 +344,13 @@ export default function ContactPage() {
                                         active ? "text-accent" : "text-primary"
                                       }`}
                                     />
-                                    <span className="text-xs font-bold leading-tight">
+                                    <span
+                                      className={`text-xs font-bold leading-tight ${
+                                        active ? "text-accent" : "text-foreground"
+                                      }`}
+                                    >
                                       {svc.value}
                                     </span>
-                                    {active && (
-                                      <div className="absolute top-2 right-2 w-4 h-4 bg-accent rounded-full flex items-center justify-center">
-                                        <CheckCircle2 className="w-3 h-3 text-accent-foreground" />
-                                      </div>
-                                    )}
                                   </button>
                                 );
                               })}
@@ -488,11 +470,11 @@ export default function ContactPage() {
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? (
-                          "Wird gesendet..."
+                          <span className="text-accent">Wird gesendet...</span>
                         ) : (
                           <>
-                            Anfrage absenden
-                            <Send className="w-5 h-5" />
+                            <span className="text-accent">Anfrage absenden</span>
+                            <Send className="w-5 h-5 text-accent" />
                           </>
                         )}
                       </Button>

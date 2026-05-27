@@ -46,7 +46,7 @@ export default function ServiceAreaSection() {
               Ort.
             </SectionHeader>
 
-            <ul className="space-y-4 mb-8">
+            <ul className="space-y-4">
               {regions.map((region, idx) => (
                 <motion.li
                   key={idx}
@@ -61,17 +61,6 @@ export default function ServiceAreaSection() {
                 </motion.li>
               ))}
             </ul>
-
-            <div className="bg-primary/5 border border-primary/10 rounded-lg p-6">
-              <h4 className="font-bold text-primary mb-2">
-                Kurze Wege, schnelle Reaktionszeiten
-              </h4>
-              <p className="text-muted-foreground text-sm">
-                Durch unseren zentralen Standort in Aschaffenburg-Schweinheim können wir nicht
-                nur unsere Regelprojekte effizient abwickeln, sondern sind im Rahmen unserer
-                24/7 Rufbereitschaft auch im Notfall schnellstens bei Ihnen.
-              </p>
-            </div>
           </div>
         </div>
       </div>
