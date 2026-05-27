@@ -45,17 +45,19 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-xl font-bold mb-6 text-accent">Öffnungszeiten</h3>
-            <ul className="space-y-4 mb-6">
-              <li className="flex items-start gap-3 text-blue-100">
-                <Clock className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                <div>
-                  <p>{companyData.hours.mo_do}</p>
-                  <p>{companyData.hours.fr}</p>
-                </div>
-              </li>
-            </ul>
+          <div className="flex flex-col-reverse md:flex-col gap-6">
+            <div>
+              <h3 className="text-xl font-bold mb-6 text-accent">Öffnungszeiten</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-blue-100">
+                  <Clock className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                  <div>
+                    <p>{companyData.hours.mo_do}</p>
+                    <p>{companyData.hours.fr}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
             <div className="bg-white/10 rounded-lg p-4 border border-white/20">
               <div className="flex items-center gap-2 text-accent font-bold mb-1">
                 <Phone className="w-4 h-4" />
@@ -72,7 +74,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-xl font-bold mb-6 text-accent">Links</h3>
-            <ul className="space-y-3 text-blue-100">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-3 md:flex md:flex-col md:space-y-3 text-blue-100">
               <li>
                 <Link href="/ueber-uns" className="hover:text-white transition-colors inline-block">
                   Über uns
