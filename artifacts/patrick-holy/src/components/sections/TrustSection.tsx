@@ -5,7 +5,7 @@ export default function TrustSection() {
   return (
     <section className="py-14 bg-[#213d86] relative -mt-10 z-20 mx-4 md:mx-auto max-w-7xl rounded-xl md:rounded-2xl shadow-2xl">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 items-center">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 items-start lg:items-center">
           {/* DVGW */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
