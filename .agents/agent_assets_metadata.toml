@@ -1,0 +1,62 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "ueaQ4-lVdmcmnVYGENCjY"
+uri = "file://artifacts/patrick-holy/public/images/hero-baustelle.png"
+type = "image"
+title = "Construction site aerial view"
+
+[[generated]]
+id = "Py3LDxPdteikbrkVDk0Ak"
+uri = "file://artifacts/patrick-holy/public/images/service-tiefbau.png"
+type = "image"
+title = "Tiefbau service image"
+
+[[generated]]
+id = "87zJcJA6JP75l7GCmQX9I"
+uri = "file://artifacts/patrick-holy/public/images/service-strassenbau.png"
+type = "image"
+title = "Strassenbau service image"
+
+[[generated]]
+id = "lHXvn8YKRe1LF0o1cbU-m"
+uri = "file://artifacts/patrick-holy/public/images/service-rohrleitungsbau.png"
+type = "image"
+title = "Rohrleitungsbau service image"
+
+[[generated]]
+id = "4bpCPw-j5UnLbaHgmu8U2"
+uri = "file://artifacts/patrick-holy/public/images/service-pflasterarbeiten.png"
+type = "image"
+title = "Pflasterarbeiten service image"
+
+[[generated]]
+id = "_AqYYHxmyoqv6NPBS79lO"
+uri = "file://artifacts/patrick-holy/public/images/service-winterdienst.png"
+type = "image"
+title = "Winterdienst service image"
+
+[[generated]]
+id = "UuflV13kVk8T_MC9kvBFH"
+uri = "file://artifacts/patrick-holy/public/images/service-abbrucharbeiten.png"
+type = "image"
+title = "Abbrucharbeiten service image"
+
+[[generated]]
+id = "Bs_POG-WBvjjeS61lrsCw"
+uri = "file://artifacts/patrick-holy/public/images/referenz-fernwaerme.png"
+type = "image"
+title = "Fernwaerme reference project"
+
+[[generated]]
+id = "mK9QIconGlT_cnjf92w-K"
+uri = "file://artifacts/patrick-holy/public/images/referenz-strassensanierung.png"
+type = "image"
+title = "Strassensanierung reference project"
+
+[[generated]]
+id = "fiMKt5UmxMceaO1xJcQZY"
+uri = "file://artifacts/patrick-holy/public/images/referenz-winterdienst.png"
+type = "image"
+title = "Winterdienst reference project"

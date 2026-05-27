@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Patrick Holy GmbH"
+version = "1.0.0"
+id = "artifacts/patrick-holy"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21435
+
+[services.development]
+run = "pnpm --filter @workspace/patrick-holy run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/patrick-holy", "run", "build" ]
+publicDir = "artifacts/patrick-holy/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21435"
+BASE_PATH = "/"
