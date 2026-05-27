@@ -55,7 +55,7 @@ export default function HeroSection() {
             <Button
               asChild
               size="lg"
-              className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-lg h-14 px-8"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-lg h-14 px-8"
             >
               <Link href="/kontakt" className="flex items-center gap-2">
                 Kontakt aufnehmen
@@ -66,7 +66,7 @@ export default function HeroSection() {
               asChild
               size="lg"
               variant="destructive"
-              className="w-full sm:w-auto font-bold text-lg h-14 px-8 shadow-lg shadow-red-500/20"
+              className="font-bold text-lg h-14 px-8 shadow-lg shadow-red-500/20"
             >
               <a href={`tel:${companyData.contact.phone.replace(/[\s/-]/g, '')}`} className="flex items-center gap-2">
                 <Phone className="w-5 h-5" />
