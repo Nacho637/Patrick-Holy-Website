@@ -161,15 +161,20 @@ export default function ContactPage() {
               {/* Ansprechpartner */}
               <div className="bg-white rounded-2xl shadow-md p-8 border border-gray-100">
                 <h3 className="text-xl font-bold mb-6 text-primary">Ihre Ansprechpartner</h3>
-                <div className="space-y-6">
+                <div className="space-y-5">
                   <div>
                     <p className="font-bold text-lg">Patrick Holy</p>
-                    <p className="text-sm text-muted-foreground mb-1">Geschäftsführer, Projekte & Gesamtleitung</p>
+                    <p className="text-sm text-muted-foreground">Geschäftsführer, Projekte & Gesamtleitung</p>
+                  </div>
+                  <div className="w-full h-px bg-gray-100" />
+                  <div>
+                    <p className="font-bold text-lg">Reiner Reisnecker</p>
+                    <p className="text-sm text-muted-foreground">Zweiter Geschäftsführer</p>
                   </div>
                   <div className="w-full h-px bg-gray-100" />
                   <div>
                     <p className="font-bold text-lg">Alexander Sauer</p>
-                    <p className="text-sm text-muted-foreground mb-1">Straßenbauermeister, Technische Fragen</p>
+                    <p className="text-sm text-muted-foreground">Straßenbauermeister, Technische Fragen</p>
                   </div>
                 </div>
                 <div className="mt-6 bg-accent/10 p-4 rounded-lg flex gap-3 items-start border border-accent/20">
