@@ -1,13 +1,31 @@
 import { Link, useLocation } from "wouter";
 import { Phone, Menu } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, MouseEvent } from "react";
 import { companyData } from "@/data/company";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
+
+  const handleHashNav = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    const hashIndex = href.indexOf("#");
+    if (hashIndex === -1) return;
+    e.preventDefault();
+    const path = href.slice(0, hashIndex) || "/";
+    const id = href.slice(hashIndex + 1);
+    const scrollTo = () => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    if (location !== path) {
+      setLocation(path);
+      setTimeout(scrollTo, 80);
+    } else {
+      scrollTo();
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,6 +65,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={(e) => handleHashNav(e, link.href)}
               data-testid={`link-nav-${link.label.toLowerCase().replace(/\s/g, "-")}`}
               className={`font-medium hover:text-accent transition-colors text-sm uppercase tracking-wide ${
                 transparent ? "text-white" : "text-foreground"
@@ -90,6 +109,7 @@ export default function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    onClick={(e) => handleHashNav(e, link.href)}
                     className="text-xl font-bold text-foreground hover:text-primary transition-colors"
                   >
                     {link.label}
