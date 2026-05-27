@@ -1,5 +1,14 @@
 import { Link, useLocation } from "wouter";
-import { Phone, Menu } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  ChevronRight,
+  Construction,
+  Info,
+  Briefcase,
+  MessageSquare,
+} from "lucide-react";
 import { useState, useEffect, MouseEvent } from "react";
 import { companyData } from "@/data/company";
 import { Button } from "@/components/ui/button";
@@ -7,6 +16,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [location, setLocation] = useLocation();
 
   const handleHashNav = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -37,12 +47,21 @@ export default function Header() {
   }, [location]);
 
   const navLinks = [
-    { label: "Leistungen", href: "/#leistungen" },
-    { label: "Über uns", href: "/ueber-uns" },
-    { label: "Karriere", href: "/karriere" },
+    { label: "Leistungen", href: "/#leistungen", icon: Construction },
+    { label: "Über uns", href: "/ueber-uns", icon: Info },
+    { label: "Karriere", href: "/karriere", icon: Briefcase },
+    { label: "Kontakt", href: "/kontakt", icon: MessageSquare },
   ];
 
   const transparent = !scrolled;
+
+  const handleMobileLinkClick = (
+    e: MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    setMenuOpen(false);
+    handleHashNav(e, href);
+  };
 
   return (
     <header
@@ -61,7 +80,7 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {navLinks.slice(0, 3).map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -91,56 +110,142 @@ export default function Header() {
         </div>
 
         <div className="md:hidden flex items-center">
-          <Sheet>
+          <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
+              <button
+                type="button"
+                aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
                 data-testid="button-mobile-menu"
-                className={transparent ? "text-white hover:bg-white/10" : "text-primary"}
+                className={`relative w-11 h-11 flex items-center justify-center rounded-md transition-colors ${
+                  menuOpen
+                    ? "text-white hover:bg-white/10"
+                    : transparent
+                      ? "text-white hover:bg-white/10"
+                      : "text-primary hover:bg-primary/10"
+                }`}
               >
-                <Menu className="w-6 h-6" />
-                <span className="sr-only">Menü öffnen</span>
-              </Button>
+                <span className="relative block w-6 h-5">
+                  <span
+                    className={`absolute left-0 right-0 h-[2.5px] rounded-full bg-current transition-all duration-300 ease-out ${
+                      menuOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
+                    }`}
+                  />
+                  <span
+                    className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2.5px] rounded-full bg-current transition-all duration-200 ${
+                      menuOpen ? "opacity-0 scale-x-0" : "opacity-100"
+                    }`}
+                  />
+                  <span
+                    className={`absolute left-0 right-0 h-[2.5px] rounded-full bg-current transition-all duration-300 ease-out ${
+                      menuOpen ? "bottom-1/2 translate-y-1/2 -rotate-45" : "bottom-0"
+                    }`}
+                  />
+                </span>
+              </button>
             </SheetTrigger>
-            <SheetContent side="right" className="flex flex-col pt-12">
-              <nav className="flex flex-col gap-6 items-center">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={(e) => handleHashNav(e, link.href)}
-                    className="text-xl font-bold text-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+            <SheetContent
+              side="right"
+              className="w-[88vw] sm:w-[400px] p-0 border-0 bg-[#213d86] text-white flex flex-col [&>button]:hidden"
+            >
+              <div
+                className="absolute inset-0 pointer-events-none opacity-[0.07]"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(135deg, #ffffff 0 1px, transparent 1px 14px)",
+                }}
+              />
+              <div className="relative flex items-center justify-between px-6 h-20 border-b border-white/10">
                 <Link
-                  href="/kontakt"
-                  className="text-xl font-bold text-foreground hover:text-primary transition-colors"
+                  href="/"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center"
                 >
-                  Kontakt
+                  <img
+                    src="/images/logo.png"
+                    alt={companyData.name}
+                    className="h-10 w-auto"
+                  />
                 </Link>
-                <div className="mt-8 w-full border-t pt-8 flex flex-col items-center">
-                  <p className="text-sm text-muted-foreground mb-4 font-medium uppercase tracking-wide">
-                    Notfall 24h Service
-                  </p>
-                  <Button
-                    asChild
-                    variant="default"
-                    size="lg"
-                    className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-lg"
-                  >
-                    <a
-                      href={`tel:${companyData.contact.phone.replace(/[\s/-]/g, "")}`}
-                      className="flex items-center justify-center gap-2"
-                    >
-                      <Phone className="w-5 h-5" />
-                      <span>{companyData.contact.phone}</span>
-                    </a>
-                  </Button>
-                </div>
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent">
+                  Menü
+                </span>
+              </div>
+
+              <nav className="relative flex-1 overflow-y-auto px-3 py-6">
+                <ul className="flex flex-col gap-1">
+                  {navLinks.map((link) => {
+                    const Icon = link.icon;
+                    const active =
+                      link.href === location ||
+                      (link.href.startsWith("/#") && location === "/");
+                    return (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          onClick={(e) => handleMobileLinkClick(e, link.href)}
+                          className={`group flex items-center gap-4 px-4 py-4 rounded-xl transition-colors ${
+                            active
+                              ? "bg-white/10 text-white"
+                              : "text-white/85 hover:bg-white/5 hover:text-white"
+                          }`}
+                        >
+                          <span
+                            className={`flex items-center justify-center w-10 h-10 rounded-lg transition-colors ${
+                              active
+                                ? "bg-accent text-accent-foreground"
+                                : "bg-white/5 text-accent group-hover:bg-white/10"
+                            }`}
+                          >
+                            <Icon className="w-5 h-5" />
+                          </span>
+                          <span className="flex-1 font-semibold text-base tracking-wide">
+                            {link.label}
+                          </span>
+                          <ChevronRight className="w-4 h-4 text-white/40 group-hover:text-accent transition-colors" />
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
               </nav>
+
+              <div className="relative px-6 py-6 border-t border-white/10 space-y-4 bg-black/10">
+                <a
+                  href={`tel:${companyData.contact.phone.replace(/[\s/-]/g, "")}`}
+                  className="flex items-center gap-3 text-white/90 hover:text-accent transition-colors text-sm"
+                >
+                  <Phone className="w-4 h-4 text-accent shrink-0" />
+                  <span className="font-semibold">{companyData.contact.phone}</span>
+                </a>
+                <a
+                  href={`mailto:${companyData.contact.email}`}
+                  className="flex items-center gap-3 text-white/90 hover:text-accent transition-colors text-sm"
+                >
+                  <Mail className="w-4 h-4 text-accent shrink-0" />
+                  <span className="truncate">{companyData.contact.email}</span>
+                </a>
+                <div className="flex items-start gap-3 text-white/75 text-xs leading-relaxed">
+                  <MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                  <span>
+                    {companyData.address.street}
+                    <br />
+                    {companyData.address.zip} {companyData.address.city}
+                  </span>
+                </div>
+
+                <Button
+                  asChild
+                  className="w-full h-12 bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-base rounded-xl shadow-lg shadow-black/20"
+                >
+                  <a
+                    href={`tel:${companyData.contact.phone.replace(/[\s/-]/g, "")}`}
+                    className="flex items-center justify-center gap-2"
+                  >
+                    <Phone className="w-5 h-5" />
+                    <span>Notfall 24/7 anrufen</span>
+                  </a>
+                </Button>
+              </div>
             </SheetContent>
           </Sheet>
         </div>
