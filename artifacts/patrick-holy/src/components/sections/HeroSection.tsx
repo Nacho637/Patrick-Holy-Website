@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight } from "lucide-react";
+import { Phone, ArrowRight, HardHat } from "lucide-react";
 import { companyData } from "@/data/company";
 
 export default function HeroSection() {
@@ -25,9 +25,25 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-            <span className="text-sm font-semibold tracking-wide uppercase">Ihr Partner in Aschaffenburg seit 1995</span>
+          <div className="inline-flex items-stretch mb-8 shadow-xl shadow-black/30 rounded-md overflow-hidden border border-white/15 backdrop-blur-md">
+            <div className="flex items-center justify-center bg-accent px-3 py-2.5">
+              <HardHat className="w-5 h-5 text-accent-foreground" strokeWidth={2.5} />
+            </div>
+            <div
+              className="flex items-center gap-2.5 px-4 py-2.5 bg-white/10"
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0 6px, transparent 6px 12px)",
+              }}
+            >
+              <span className="text-[11px] md:text-xs font-extrabold tracking-[0.18em] uppercase text-white">
+                Ihr Partner in Aschaffenburg
+              </span>
+              <span className="h-3.5 w-px bg-white/40" />
+              <span className="text-[11px] md:text-xs font-extrabold tracking-[0.18em] uppercase text-accent">
+                seit 1995
+              </span>
+            </div>
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
