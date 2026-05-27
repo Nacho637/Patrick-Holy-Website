@@ -354,12 +354,12 @@ export default function ContactPage() {
                                   >
                                     <Icon
                                       className={`w-6 h-6 ${
-                                        active ? "text-accent" : "text-primary"
+                                        active ? "text-white" : "text-primary"
                                       }`}
                                     />
                                     <span
                                       className={`text-xs font-bold leading-tight ${
-                                        active ? "text-accent" : "text-foreground"
+                                        active ? "text-white" : "text-foreground"
                                       }`}
                                     >
                                       {svc.value}
@@ -483,11 +483,11 @@ export default function ContactPage() {
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? (
-                          <span className="text-accent">Wird gesendet...</span>
+                          <span className="text-white">Wird gesendet...</span>
                         ) : (
                           <>
-                            <span className="text-accent">Anfrage absenden</span>
-                            <Send className="w-5 h-5 text-accent" />
+                            <span className="text-white">Anfrage absenden</span>
+                            <Send className="w-5 h-5 text-white" />
                           </>
                         )}
                       </Button>
