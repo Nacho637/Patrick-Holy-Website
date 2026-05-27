@@ -8,7 +8,6 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
-  const isHome = location === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,7 +16,7 @@ export default function Header() {
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location]);
 
   const navLinks = [
     { label: "Leistungen", href: "/#leistungen" },
@@ -25,14 +24,14 @@ export default function Header() {
     { label: "Karriere", href: "/karriere" },
   ];
 
-  const transparent = isHome && !scrolled;
+  const transparent = !scrolled;
 
   return (
     <header
       data-testid="header-main"
-      className={`top-0 z-50 w-full transition-all duration-300 ${
-        isHome ? "fixed" : "sticky"
-      } ${transparent ? "bg-transparent" : "bg-white shadow-md"}`}
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        transparent ? "bg-transparent" : "bg-white shadow-md"
+      }`}
     >
       <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2" data-testid="link-home-logo">
