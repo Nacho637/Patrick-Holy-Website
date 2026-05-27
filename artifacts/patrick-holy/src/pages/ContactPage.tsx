@@ -16,7 +16,7 @@ import {
   Construction,
   Snowflake,
   Hammer,
-  Layers,
+  Flame,
   Route,
   HelpCircle,
 } from "lucide-react";
@@ -56,7 +56,7 @@ const formSchema = z.object({
 const SERVICES = [
   { value: "Tiefbau", icon: Construction },
   { value: "Straßenbau", icon: Route },
-  { value: "Rohrleitungsbau/Fernwärme", icon: Layers },
+  { value: "Rohrleitungsbau/Fernwärme", icon: Flame },
   { value: "Pflasterarbeiten", icon: Hammer },
   { value: "Winterdienst", icon: Snowflake },
   { value: "Erd-/Abbrucharbeiten", icon: Building2 },
