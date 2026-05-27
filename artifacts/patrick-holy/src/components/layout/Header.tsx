@@ -66,7 +66,7 @@ export default function Header() {
   return (
     <header
       data-testid="header-main"
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-[background-color,box-shadow] duration-300 ${
         transparent ? "bg-transparent" : "bg-white shadow-md"
       }`}
     >
@@ -124,19 +124,19 @@ export default function Header() {
                       : "text-primary hover:bg-primary/10"
                 }`}
               >
-                <span className="relative block w-6 h-5">
+                <span className="relative block w-6 h-[18px]">
                   <span
-                    className={`absolute left-0 right-0 h-[2.5px] rounded-full bg-current transition-all duration-300 ease-out ${
+                    className={`absolute left-0 right-0 h-[2px] bg-current transition-all duration-300 ease-out ${
                       menuOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
                     }`}
                   />
                   <span
-                    className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2.5px] rounded-full bg-current transition-all duration-200 ${
+                    className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-current transition-all duration-200 ${
                       menuOpen ? "opacity-0 scale-x-0" : "opacity-100"
                     }`}
                   />
                   <span
-                    className={`absolute left-0 right-0 h-[2.5px] rounded-full bg-current transition-all duration-300 ease-out ${
+                    className={`absolute left-0 right-0 h-[2px] bg-current transition-all duration-300 ease-out ${
                       menuOpen ? "bottom-1/2 translate-y-1/2 -rotate-45" : "bottom-0"
                     }`}
                   />
