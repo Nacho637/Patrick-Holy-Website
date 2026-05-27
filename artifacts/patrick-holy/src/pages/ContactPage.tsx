@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearch } from "wouter";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -83,6 +84,18 @@ export default function ContactPage() {
   const selectedService = form.watch("service");
   const showWinterdienst = selectedService === "Winterdienst";
 
+  const search = useSearch();
+  useEffect(() => {
+    const params = new URLSearchParams(search);
+    const svc = params.get("service");
+    if (svc && SERVICES.some((s) => s.value === svc)) {
+      form.setValue("service", svc);
+      requestAnimationFrame(() => {
+        document.getElementById("anfrage-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }, [search]);
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     setTimeout(() => {
@@ -133,7 +146,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+      <section id="anfrage-form" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12">
             {/* Left Col: Info */}
