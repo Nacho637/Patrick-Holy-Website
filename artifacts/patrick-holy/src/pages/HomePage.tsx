@@ -4,7 +4,6 @@ import ServicesSection from "@/components/sections/ServicesSection";
 import ServiceAreaSection from "@/components/sections/ServiceAreaSection";
 import ReferencesSection from "@/components/sections/ReferencesSection";
 import PressSection from "@/components/sections/PressSection";
-import FacebookSection from "@/components/sections/FacebookSection";
 
 export default function HomePage() {
   return (
@@ -15,7 +14,6 @@ export default function HomePage() {
       <ServiceAreaSection />
       <ReferencesSection />
       <PressSection />
-      <FacebookSection />
     </div>
   );
 }

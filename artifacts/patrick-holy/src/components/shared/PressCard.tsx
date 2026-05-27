@@ -1,7 +1,6 @@
 import { PressArticle } from "@/types";
-import { ExternalLink } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { ExternalLink, Quote } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface PressCardProps {
   article: PressArticle;
@@ -9,41 +8,75 @@ interface PressCardProps {
 
 export default function PressCard({ article }: PressCardProps) {
   return (
-    <Card className="border-l-4 border-l-accent overflow-hidden shadow-md">
-      <CardContent className="p-6 md:p-8">
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3 font-medium">
-              <span className="bg-primary/10 text-primary px-3 py-1 rounded-full">
-                {article.source}
-              </span>
-              <span>{article.date}</span>
+    <motion.a
+      href={article.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="block group max-w-4xl mx-auto"
+      data-testid={`press-card-${article.id}`}
+    >
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 group-hover:shadow-2xl group-hover:-translate-y-1 transition-all duration-300">
+        {/* Newspaper-style header bar */}
+        <div className="bg-gradient-to-r from-[#c8102e] to-[#a00d24] text-white px-6 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="bg-white text-[#c8102e] font-black text-sm md:text-base px-2 py-0.5 tracking-tight italic">
+              Main-Echo
             </div>
-            
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              {article.title}
-            </h3>
-            
-            <blockquote className="text-lg italic text-muted-foreground border-l-2 border-gray-200 pl-4 py-1 mb-6">
-              "{article.excerpt}"
-            </blockquote>
+            <span className="text-xs md:text-sm text-white/90 font-medium hidden sm:inline">
+              Online-Ausgabe · {article.date}
+            </span>
           </div>
-          
-          <div className="shrink-0 flex items-center">
-            <Button asChild variant="outline" className="group">
-              <a 
-                href={article.url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
-                <span>Artikel lesen</span>
-                <ExternalLink className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
-              </a>
-            </Button>
+          <span className="text-xs md:text-sm font-semibold uppercase tracking-wider bg-white/15 px-3 py-1 rounded-full">
+            Pressebericht
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
+          {/* Image */}
+          <div className="md:col-span-2 relative aspect-video md:aspect-auto md:min-h-[280px] overflow-hidden bg-gray-100">
+            <img
+              src="/images/patrick-holy-auszeichnung.jpg"
+              alt="Auszeichnung Partner der Feuerwehr"
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute bottom-3 left-3 bg-accent text-accent-foreground text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+              Auszeichnung 2023
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="md:col-span-3 p-6 md:p-8 flex flex-col justify-between">
+            <div>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-2">
+                Lokales · Feuerwehr Waldaschaff
+              </div>
+              <h3 className="text-2xl md:text-3xl font-extrabold text-foreground mb-4 leading-tight font-serif group-hover:text-primary transition-colors">
+                {article.title}
+              </h3>
+              <div className="relative pl-8 border-l-2 border-accent mb-6">
+                <Quote className="absolute -left-3 top-0 w-6 h-6 text-accent bg-white" />
+                <p className="text-lg italic text-foreground/80 leading-relaxed">
+                  „{article.excerpt}"
+                </p>
+                <p className="text-sm text-muted-foreground mt-3 font-medium">
+                  — Kreisbrandrat Frank Wissel
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center justify-between border-t border-gray-100 pt-4">
+              <span className="text-sm text-muted-foreground">{article.source} · {article.date}</span>
+              <span className="inline-flex items-center gap-2 text-primary font-bold text-sm group-hover:gap-3 transition-all">
+                Original-Artikel lesen
+                <ExternalLink className="w-4 h-4" />
+              </span>
+            </div>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </motion.a>
   );
 }

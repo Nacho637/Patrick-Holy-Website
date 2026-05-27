@@ -3,7 +3,22 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Phone, Mail, MapPin, Clock, Info, CheckCircle2 } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Info,
+  CheckCircle2,
+  Send,
+  Building2,
+  Construction,
+  Snowflake,
+  Hammer,
+  Layers,
+  Route,
+  HelpCircle,
+} from "lucide-react";
 
 import { companyData } from "@/data/company";
 import { Button } from "@/components/ui/button";
@@ -17,8 +32,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
@@ -26,13 +46,21 @@ const formSchema = z.object({
   email: z.string().email({ message: "Bitte eine gültige E-Mail-Adresse eingeben." }),
   phone: z.string().optional(),
   service: z.string().min(1, { message: "Bitte einen Bereich wählen." }),
-  // Winterdienst specific
   area: z.string().optional(),
   address: z.string().optional(),
   clientType: z.string().optional(),
-  //
   message: z.string().min(10, { message: "Nachricht muss mindestens 10 Zeichen lang sein." }),
 });
+
+const SERVICES = [
+  { value: "Tiefbau", icon: Construction },
+  { value: "Straßenbau", icon: Route },
+  { value: "Rohrleitungsbau/Fernwärme", icon: Layers },
+  { value: "Pflasterarbeiten", icon: Hammer },
+  { value: "Winterdienst", icon: Snowflake },
+  { value: "Erd-/Abbrucharbeiten", icon: Building2 },
+  { value: "Sonstiges", icon: HelpCircle },
+];
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -57,7 +85,6 @@ export default function ContactPage() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    // Simulate API call
     setTimeout(() => {
       console.log(values);
       setIsSubmitting(false);
@@ -75,7 +102,9 @@ export default function ContactPage() {
       <section className="bg-primary text-white py-20 relative">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Kontakt & Anfrage</h1>
-          <p className="text-xl text-blue-100">Wir sind für Sie da – in Aschaffenburg und am ganzen Bayerischen Untermain.</p>
+          <p className="text-xl text-blue-100">
+            Wir sind für Sie da – in Aschaffenburg und am ganzen Bayerischen Untermain.
+          </p>
         </div>
       </section>
 
@@ -83,9 +112,19 @@ export default function ContactPage() {
       <div className="bg-accent text-accent-foreground py-6 border-b-4 border-primary">
         <div className="container mx-auto px-4 text-center">
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
-            <h2 className="text-xl md:text-2xl font-bold">Notfall? Wir sind 365 Tage, 24h für Sie erreichbar.</h2>
-            <Button asChild size="lg" variant="default" className="bg-primary text-white hover:bg-primary/90 font-bold text-lg rounded-full">
-              <a href={`tel:${companyData.contact.phone.replace(/[\s/-]/g, '')}`} className="flex items-center gap-2">
+            <h2 className="text-xl md:text-2xl font-bold">
+              Notfall? Wir sind 365 Tage, 24h für Sie erreichbar.
+            </h2>
+            <Button
+              asChild
+              size="lg"
+              variant="default"
+              className="bg-primary text-white hover:bg-primary/90 font-bold text-lg rounded-full"
+            >
+              <a
+                href={`tel:${companyData.contact.phone.replace(/[\s/-]/g, "")}`}
+                className="flex items-center gap-2"
+              >
                 <Phone className="w-5 h-5" />
                 {companyData.contact.phone}
               </a>
@@ -94,21 +133,20 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-8">
-            
-            {/* Left Col: Info & Image */}
-            <div className="lg:col-span-2 space-y-8">
-              <div className="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100">
-                <img 
-                  src="/images/firmenzentrale.jpg" 
-                  alt="Zentrale der Patrick Holy GmbH" 
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12">
+            {/* Left Col: Info */}
+            <div className="lg:col-span-2 space-y-6">
+              <div className="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100">
+                <img
+                  src="/images/firmenzentrale.jpg"
+                  alt="Zentrale der Patrick Holy GmbH"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-primary">Unsere Zentrale</h3>
-                  
+                  <h3 className="text-2xl font-extrabold mb-6 text-primary">Unsere Zentrale</h3>
+
                   <ul className="space-y-6">
                     <li className="flex items-start gap-4">
                       <div className="bg-primary/10 p-3 rounded-full text-primary shrink-0">
@@ -117,19 +155,23 @@ export default function ContactPage() {
                       <div>
                         <p className="font-bold text-foreground">Adresse</p>
                         <p className="text-muted-foreground">{companyData.address.street}</p>
-                        <p className="text-muted-foreground">{companyData.address.zip} {companyData.address.city}</p>
-                        <p className="text-sm text-muted-foreground mt-1">({companyData.address.district})</p>
-                        <a 
-                          href="https://maps.google.com/?q=Patrick+Holy+GmbH+Aschaffenburg" 
-                          target="_blank" 
+                        <p className="text-muted-foreground">
+                          {companyData.address.zip} {companyData.address.city}
+                        </p>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          ({companyData.address.district})
+                        </p>
+                        <a
+                          href="https://maps.google.com/?q=Patrick+Holy+GmbH+Aschaffenburg"
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="text-primary text-sm font-medium mt-2 inline-block hover:underline"
                         >
-                          Auf Google Maps öffnen
+                          Auf Google Maps öffnen →
                         </a>
                       </div>
                     </li>
-                    
+
                     <li className="flex items-start gap-4">
                       <div className="bg-primary/10 p-3 rounded-full text-primary shrink-0">
                         <Phone className="w-5 h-5" />
@@ -139,7 +181,9 @@ export default function ContactPage() {
                         <p className="text-muted-foreground">Tel: {companyData.contact.phone}</p>
                         <p className="text-muted-foreground">Fax: {companyData.contact.fax}</p>
                         <p className="text-primary hover:underline mt-1">
-                          <a href={`mailto:${companyData.contact.email}`}>{companyData.contact.email}</a>
+                          <a href={`mailto:${companyData.contact.email}`}>
+                            {companyData.contact.email}
+                          </a>
                         </p>
                       </div>
                     </li>
@@ -159,28 +203,48 @@ export default function ContactPage() {
               </div>
 
               {/* Ansprechpartner */}
-              <div className="bg-white rounded-2xl shadow-md p-8 border border-gray-100">
-                <h3 className="text-xl font-bold mb-6 text-primary">Ihre Ansprechpartner</h3>
+              <div className="bg-white rounded-3xl shadow-lg p-8 border border-gray-100">
+                <h3 className="text-xl font-extrabold mb-6 text-primary">Ihre Ansprechpartner</h3>
                 <div className="space-y-5">
-                  <div>
-                    <p className="font-bold text-lg">Patrick Holy</p>
-                    <p className="text-sm text-muted-foreground">Geschäftsführer, Projekte & Gesamtleitung</p>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-extrabold text-lg shrink-0">
+                      PH
+                    </div>
+                    <div>
+                      <p className="font-bold text-lg">Patrick Holy</p>
+                      <p className="text-sm text-muted-foreground">
+                        Geschäftsführer · Projekte & Gesamtleitung
+                      </p>
+                    </div>
                   </div>
                   <div className="w-full h-px bg-gray-100" />
-                  <div>
-                    <p className="font-bold text-lg">Reiner Reisnecker</p>
-                    <p className="text-sm text-muted-foreground">Zweiter Geschäftsführer</p>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-extrabold text-lg shrink-0">
+                      RR
+                    </div>
+                    <div>
+                      <p className="font-bold text-lg">Reiner Reisnecker</p>
+                      <p className="text-sm text-muted-foreground">Zweiter Geschäftsführer</p>
+                    </div>
                   </div>
                   <div className="w-full h-px bg-gray-100" />
-                  <div>
-                    <p className="font-bold text-lg">Alexander Sauer</p>
-                    <p className="text-sm text-muted-foreground">Straßenbauermeister, Technische Fragen</p>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-extrabold text-lg shrink-0">
+                      AS
+                    </div>
+                    <div>
+                      <p className="font-bold text-lg">Alexander Sauer</p>
+                      <p className="text-sm text-muted-foreground">
+                        Straßenbauermeister · Technische Fragen
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div className="mt-6 bg-accent/10 p-4 rounded-lg flex gap-3 items-start border border-accent/20">
-                  <Info className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                <div className="mt-6 bg-accent/10 p-4 rounded-xl flex gap-3 items-start border border-accent/30">
+                  <Info className="w-5 h-5 text-accent-foreground shrink-0 mt-0.5" />
                   <p className="text-sm text-foreground">
-                    Für alle Anliegen erreichen Sie unser Team zentral unter <strong>{companyData.contact.phone}</strong>.
+                    Für alle Anliegen erreichen Sie unser Team zentral unter{" "}
+                    <strong>{companyData.contact.phone}</strong>.
                   </p>
                 </div>
               </div>
@@ -188,192 +252,259 @@ export default function ContactPage() {
 
             {/* Right Col: Form */}
             <div className="lg:col-span-3">
-              <div className="bg-white rounded-2xl shadow-lg p-6 md:p-10 border border-gray-100">
-                <h2 className="text-3xl font-extrabold mb-2">Schreiben Sie uns</h2>
-                <p className="text-muted-foreground mb-8">Nutzen Sie unser Formular für allgemeine Anfragen oder konkrete Projektanfragen.</p>
+              <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-accent/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full translate-y-1/2 -translate-x-1/2" />
 
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Name / Firma *</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Ihr Name" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>E-Mail *</FormLabel>
-                            <FormControl>
-                              <Input placeholder="ihre@email.de" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 bg-accent text-accent-foreground text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+                    <Send className="w-3 h-3" />
+                    Anfrage senden
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-extrabold mb-3">Schreiben Sie uns</h2>
+                  <p className="text-muted-foreground mb-10 text-lg">
+                    Beschreiben Sie uns Ihr Anliegen — wir melden uns schnellstmöglich zurück.
+                  </p>
 
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Telefonnummer</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Für Rückfragen" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="service"
-                      render={({ field }) => (
-                        <FormItem className="space-y-3">
-                          <FormLabel>Worum geht es?</FormLabel>
-                          <FormControl>
-                            <RadioGroup
-                              onValueChange={field.onChange}
-                              defaultValue={field.value}
-                              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-                            >
-                              {[
-                                "Tiefbau",
-                                "Straßenbau",
-                                "Rohrleitungsbau/Fernwärme",
-                                "Pflasterarbeiten",
-                                "Winterdienst",
-                                "Erd-/Abbrucharbeiten",
-                                "Sonstiges"
-                              ].map((svc) => (
-                                <FormItem key={svc} className="flex items-center space-x-3 space-y-0 bg-gray-50 border border-gray-200 p-3 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
-                                  <FormControl>
-                                    <RadioGroupItem value={svc} />
-                                  </FormControl>
-                                  <FormLabel className="font-normal cursor-pointer w-full">
-                                    {svc}
-                                  </FormLabel>
-                                </FormItem>
-                              ))}
-                            </RadioGroup>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    {/* Conditional Winterdienst Fields */}
-                    {showWinterdienst && (
-                      <motion.div 
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        className="bg-accent/10 border border-accent/20 p-6 rounded-xl space-y-6 overflow-hidden"
-                      >
-                        <h4 className="font-bold flex items-center gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-accent" />
-                          Zusatzangaben Winterdienst
-                        </h4>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <FormField
-                            control={form.control}
-                            name="area"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Zu räumende Fläche (ca. m²)</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="z.B. 500" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="clientType"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Auftraggeber</FormLabel>
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                  <FormControl>
-                                    <SelectTrigger>
-                                      <SelectValue placeholder="Bitte wählen" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="gewerblich">Gewerblich / Unternehmen</SelectItem>
-                                    <SelectItem value="kommune">Kommune / Behörde</SelectItem>
-                                    <SelectItem value="privat">Privat</SelectItem>
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField
                           control={form.control}
-                          name="address"
+                          name="name"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Genaue Adresse / Standort</FormLabel>
+                              <FormLabel className="text-sm font-bold uppercase tracking-wide text-foreground">
+                                Name / Firma *
+                              </FormLabel>
                               <FormControl>
-                                <Input placeholder="Straße, PLZ Ort" {...field} />
+                                <Input
+                                  placeholder="Ihr Name"
+                                  className="h-12 rounded-xl border-gray-200 focus-visible:border-primary focus-visible:ring-primary/20"
+                                  data-testid="input-name"
+                                  {...field}
+                                />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
                           )}
                         />
-                      </motion.div>
-                    )}
+                        <FormField
+                          control={form.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-sm font-bold uppercase tracking-wide text-foreground">
+                                E-Mail *
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder="ihre@email.de"
+                                  className="h-12 rounded-xl border-gray-200 focus-visible:border-primary focus-visible:ring-primary/20"
+                                  data-testid="input-email"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
 
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Ihre Nachricht *</FormLabel>
-                          <FormControl>
-                            <Textarea 
-                              placeholder="Beschreiben Sie kurz Ihr Anliegen..." 
-                              className="min-h-[120px]" 
-                              {...field} 
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-sm font-bold uppercase tracking-wide text-foreground">
+                              Telefonnummer
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="Für Rückfragen"
+                                className="h-12 rounded-xl border-gray-200 focus-visible:border-primary focus-visible:ring-primary/20"
+                                data-testid="input-phone"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="service"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-sm font-bold uppercase tracking-wide text-foreground mb-3 block">
+                              Worum geht es?
+                            </FormLabel>
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                              {SERVICES.map((svc) => {
+                                const Icon = svc.icon;
+                                const active = field.value === svc.value;
+                                return (
+                                  <button
+                                    key={svc.value}
+                                    type="button"
+                                    onClick={() => field.onChange(svc.value)}
+                                    data-testid={`button-service-${svc.value}`}
+                                    className={`group relative flex flex-col items-center justify-center gap-2 p-4 rounded-2xl border-2 transition-all text-center min-h-[100px] ${
+                                      active
+                                        ? "border-primary bg-primary text-white shadow-lg scale-[1.02]"
+                                        : "border-gray-200 bg-white text-foreground hover:border-primary/40 hover:bg-primary/5"
+                                    }`}
+                                  >
+                                    <Icon
+                                      className={`w-6 h-6 ${
+                                        active ? "text-accent" : "text-primary"
+                                      }`}
+                                    />
+                                    <span className="text-xs font-bold leading-tight">
+                                      {svc.value}
+                                    </span>
+                                    {active && (
+                                      <div className="absolute top-2 right-2 w-4 h-4 bg-accent rounded-full flex items-center justify-center">
+                                        <CheckCircle2 className="w-3 h-3 text-accent-foreground" />
+                                      </div>
+                                    )}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      {showWinterdienst && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          className="bg-gradient-to-br from-accent/15 to-accent/5 border-2 border-accent/30 p-6 rounded-2xl space-y-6 overflow-hidden"
+                        >
+                          <h4 className="font-bold flex items-center gap-2 text-foreground">
+                            <Snowflake className="w-5 h-5 text-primary" />
+                            Zusatzangaben Winterdienst
+                          </h4>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <FormField
+                              control={form.control}
+                              name="area"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-sm font-bold uppercase tracking-wide">
+                                    Fläche (ca. m²)
+                                  </FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="z.B. 500"
+                                      className="h-12 rounded-xl bg-white"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
                             />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                            <FormField
+                              control={form.control}
+                              name="clientType"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-sm font-bold uppercase tracking-wide">
+                                    Auftraggeber
+                                  </FormLabel>
+                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                    <FormControl>
+                                      <SelectTrigger className="h-12 rounded-xl bg-white">
+                                        <SelectValue placeholder="Bitte wählen" />
+                                      </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                      <SelectItem value="gewerblich">
+                                        Gewerblich / Unternehmen
+                                      </SelectItem>
+                                      <SelectItem value="kommune">Kommune / Behörde</SelectItem>
+                                      <SelectItem value="privat">Privat</SelectItem>
+                                    </SelectContent>
+                                  </Select>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                          </div>
 
-                    <Button 
-                      type="submit" 
-                      size="lg" 
-                      className="w-full font-bold text-lg h-14"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Wird gesendet..." : "Anfrage absenden"}
-                    </Button>
-                    <p className="text-xs text-center text-muted-foreground mt-4">
-                      Ihre Daten werden sicher übertragen und nur zur Bearbeitung Ihrer Anfrage verwendet.
-                    </p>
-                  </form>
-                </Form>
+                          <FormField
+                            control={form.control}
+                            name="address"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="text-sm font-bold uppercase tracking-wide">
+                                  Genaue Adresse / Standort
+                                </FormLabel>
+                                <FormControl>
+                                  <Input
+                                    placeholder="Straße, PLZ Ort"
+                                    className="h-12 rounded-xl bg-white"
+                                    {...field}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </motion.div>
+                      )}
+
+                      <FormField
+                        control={form.control}
+                        name="message"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-sm font-bold uppercase tracking-wide text-foreground">
+                              Ihre Nachricht *
+                            </FormLabel>
+                            <FormControl>
+                              <Textarea
+                                placeholder="Beschreiben Sie kurz Ihr Anliegen..."
+                                className="min-h-[140px] rounded-xl border-gray-200 focus-visible:border-primary focus-visible:ring-primary/20"
+                                data-testid="input-message"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <Button
+                        type="submit"
+                        size="lg"
+                        data-testid="button-submit-contact"
+                        className="w-full font-bold text-lg h-16 rounded-2xl bg-gradient-to-r from-primary to-primary/90 hover:from-primary/95 hover:to-primary shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all gap-2"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          "Wird gesendet..."
+                        ) : (
+                          <>
+                            Anfrage absenden
+                            <Send className="w-5 h-5" />
+                          </>
+                        )}
+                      </Button>
+                      <p className="text-xs text-center text-muted-foreground">
+                        Ihre Daten werden sicher übertragen und nur zur Bearbeitung Ihrer Anfrage
+                        verwendet.
+                      </p>
+                    </form>
+                  </Form>
+                </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
