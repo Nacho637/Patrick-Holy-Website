@@ -1,0 +1,153 @@
+Ihre Nachricht konnte nicht an mehrere Empfänger zugestellt werden.
+Die Sicherheits- oder Richtlinieneinstellungen in dgz-ab.de haben Ihre Nachricht zurückgewiesen.
+lr	Office 365	dgz-ab.de
+Absender		Aktion erforderlich
+Sicherheits- oder Richtlinienverstoß.
+Zustellung an die folgenden Empfänger war nicht möglich:
+Simge.Coerten@dgz-ab.de, nadja.keimig@dgz-ab.de
+
+Methode zur Behebung
+Der E-Mail-Server des Empfängers akzeptiert Ihre Nachricht nicht, weil sie offenbar gegen die bestehenden Sicherheits- oder Richtlinieneinstellungen verstößt. Überprüfen Sie den Gemeldeten Fehler unten, um festzustellen, ob Sie herausfinden können, warum die Nachricht blockiert wurde. Versuchen Sie anschließend eins oder mehrere der folgenden Verfahren:
+Wenn im Fehler SPF-, DKIM- oder DMARC-Probleme genannt werden, leiten Sie diese Nachricht an Ihren E-Mail-Administrator weiter, um Hilfe zu erhalten.
+The recipient's email server might suspect that your message is spam. Follow the guidance in this article: E-mailing Best Practices for Senders. Then resend your message.
+Wenn der Fehler angibt, dass Ihre Nachricht zu groß ist, versuchen Sie, die Größe der Anlage zu verringern. Wenn das nicht möglich ist, platzieren Sie die Datei an einem öffentlich zugänglichen Speicherort in der Cloud, wie etwa OneDrive. Fügen Sie dann der Nachricht einen Link zu der Datei hinzu, und senden Sie die Nachricht erneut.
+Wenden Sie sich an den Empfänger (zum Beispiel per Telefon), und fordern Sie ihn auf, seinen E-Mail-Administrator zu bitten, Sie oder Ihre E-Mail-Domäne zur Liste der zugelassenen Absender hinzuzufügen.
+Wenn das Problem weiterhin besteht, leiten Sie diese Nachricht an Ihren E-Mail-Administrator weiter. Wenn Sie E-Mail-Administrator sind, lesen Sie unten den Abschnitt Weitere Informationen für E-Mail-Administratoren.
+
+Waren diese Informationen hilfreich? Feedback an Microsoft senden.
+
+Weitere Informationen für E-Mail-Administratoren
+Statuscode: 550 5.7.1
+
+Dieser Fehler tritt auf, wenn die Domäne des Empfängers Sicherheits- oder Richtlinieneinstellungen aufweist, die zur Ablehnung der Nachricht des Absenders führen. Wir konnten die spezifische Einstellung, die zu dieser Ablehnung führt, aber nicht bestimmen. Normalerweise wird der Fehler von einem E-Mail-Server außerhalb von Office 365 gemeldet. Häufige Probleme sind etwa: Der Empfangsserver vermutet, dass die Nachricht in böswilliger Absicht gesendet wurde oder Spam darstellt; der SPF-Eintrag (Sender Policy Framework) für lohnlab.de ist fehlerhaft konfiguriert oder nicht vorhanden; oder die Nachricht enthält eine Anlage, die größer als das für den empfangenden Server festgelegte Limit ist. Versuchen Sie eins oder mehrere der folgenden Verfahren:
+
+Überprüfen des gemeldeten Fehlers – Überprüfen Sie den unten angezeigten Gemeldeten Fehler, um die Identifikation des Problems zu unterstützen. Wenn das Problem mit einem SPF-Fehler zusammenhängt, enthält der gemeldete Fehler normalerweise das Akronym "SPF" oder die Formulierung "Sender Policy Framework."
+
+Konfigurieren Sie Ihre SPF-Einträge richtig – Wenn Sie der Administrator der Absender-E-Mail sind, achten Sie auf die ordnungsgemäße Konfiguration der SPF-Einträge bei Ihrer Domänenregistrierungsstelle. Office 365 unterstützt nur einen SPF-Eintrag (das ist ein TXT-Eintrag, der SPF definiert) für Ihre Domäne. Schließen Sie den folgenden Domänennamen ein: spf.protection.outlook.com. Wenn Sie eine Hybridkonfiguration betreiben (mit einem Teil der Postfächer in der Cloud und dem anderen Teil lokal) oder Sie ein eigenständiger Exchange Online Protection-Kunde sind, fügen Sie die ausgehende IP-Adresse Ihres lokalen Servers zum TXT-Eintrag hinzu. Informationen dazu finden Sie unter Anpassen eines SPF-Eintrags, um von Ihrer Domäne gesendete E-Mails zu validieren und Externe DNS-Einträge für Office 365.
+
+Relay nicht möglich – Wenn der gemeldete Fehler auf ein Problem mit der Weiterleitung hinweist (z. B. "Relay nicht möglich"), dann ist der E-Mail-Server, der den Fehler gemeldet hat, wahrscheinlich nicht richtig für den Empfang und die Weiterleitung von Nachrichten aus der Domäne des Absenders konfiguriert. Bei diesem Server handelt es sich normalerweise um einen der lokalen Server in einer Hybridumgebung, einen Smarthost-E-Mail-Service, durch den Sie Nachrichten weiterzuleiten versuchen oder möglicherweise sogar um einen E-Mail-Hostingdienst, den Sie früher verwendet haben, auf den Nachrichtenflusseinstellungen aber immer noch verweisen (beispielsweise, wenn der MX-Eintrag bei Ihrer Domänenregistrierungsstelle noch auf Ihren früheren E-Mail-Dienstanbieter verweist). Überprüfen Sie unten Fehler gemeldet von, um zu bestimmen, von welcher Domäne, welchem Dienst oder welchem Server der Fehler gemeldet wird. Der E-Mail-Server muss so konfiguriert sein, dass er entweder Nachrichten von anonymen Benutzern akzeptiert oder die Absenderdomäne oder IP in seiner Liste der authentifizierten Absender enthält. Auf einem Exchange-Server können Sie dies im Empfangsconnector des Servers einrichten. Wenn es sich um einen Smarthost handelt, der von einem anderen Service oder Partner verwaltet wird, wenden Sie sich an den Service oder Partner, damit er seine Server für das Akzeptieren und Weiterleiten von Nachrichten von Ihren Absendern akzeptiert. Arbeiten Sie außerdem mit Ihrer Domänenregistrierungsstelle zusammen, um sicherzustellen, dass Ihre MX-Einträge ordnungsgemäß konfiguriert sind.
+
+Wenden Sie sich an den E-Mail-Administrator des Empfängers – Bei einigen Szenarien kann das Problem durch Verbindungsaufnahme mit dem E-Mail-Administrator der Empfängerdomäne behoben werden, indem Sie ihn bitten, die E-Mail-Adresse des Absenders oder Ihre Domäne zur Liste der zugelassenen Absender hinzuzufügen oder die Einstellungen, die die Ablehnung verursacht, zu lockern.
+
+Weitere Informationen und Schritte zur Behebung dieses Problems finden Sie unter Beheben von Problemen mit der E-Mail-Zustellung für den Fehlercode 5.7.1 in Office 365.
+
+Details der ursprünglichen Nachricht
+Erstellt am:	28.05.2026 07:42:07
+Absenderadresse:	lr@lohnlab.de
+Empfängeradresse:	Simge.Coerten@dgz-ab.de, nadja.keimig@dgz-ab.de
+Betreff:	AW: Anfrage Website Patrick Holy
+
+Fehlerdetails
+Fehler:	550 5.7.1 Recipients have complained about included content (B-URL)
+Anzahl der Wiederholungen:	1
+Nachricht abgelehnt von:	smtpin.rzone.de
+
+Benachrichtigungsdetails
+Gesendet von:	FR6P281MB3472.DEUP281.PROD.OUTLOOK.COM
+
+Nachrichtenhops
+HOP	UHRZEIT (UTC)	VON	ZU	MIT	RELAYZEIT
+1	28.05.2026
+07:42:08	BE1P281MB2467.DEUP281.PROD.OUTLOOK.COM	BE1P281MB2467.DEUP281.PROD.OUTLOOK.COM	mapi	1 Sek.
+2	28.05.2026
+07:42:08	BE1P281MB2467.DEUP281.PROD.OUTLOOK.COM	FR6P281MB3472.DEUP281.PROD.OUTLOOK.COM	Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384)	*
+Ursprüngliche Nachrichtenköpfe
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=lA/1hl+xmTX79G8Ua48jqJgibNJN+7wNAw3h1ksgEGSi5IuZZt3yOF3P5I5VbLn/hujfNvKva3Vd4vUH0iqFHY/hnhGTU7CV5u6wUtFcdYmRmMPV2rw72bl8pfor4YEhKEEU1Eyr0NzrLsjiAPFaaHS8Rr+eOYDXMAYs431Ca/HbMuPouz2ksUQPGHQJ5ve26nlWW1yfuOC+N1OUD2UiZC5qIFNiWhpY/1bT4rpn/lgLdf8Sjk4hFfVv/ZhdRNTv5CHdQR+5R1qeXqonTc8wCYesx9EzKebABB9Foldys9Hxj7ocjfvBqOyDIoBUnR1SwVKQ7FCIXrJAGSYr8jTNOg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=yzkgZ8k4UwLnx1pcd+YMOlBTyuq4RX2iL/UsfA1e4I8=;
+ b=W9HYt7BnqKSkfBVL0uxSJvXrPgoKrphVfdV0YcoQZbiMsP4XA+9Ip0Ledp+xEOmaCra3LvxBfg75LDtdjMN4BLepHvLZDMS8uik8luqvQv/ye7yhz899b2IJn2MqOa69rJ0j/aDsMJqdYTB3w+OWJQJqzBB/JOVTN9IaJUODCAvJnMJiBUbFgf+iIyTa+uJhzBeWOkUA863FhBtdc1svHk6dkIE4WyGy5IkYUK4+zjeryGI5YHW6oMXirYILutmtSoNox/eGhp4wraird0YPzFn3Bx0Kz+oWreFsl1H9R9/mBJFjGgrGNn+A32ruECEy4o4/vtHULxMNLtbE38OLvg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=lohnlab.de; dmarc=pass action=none header.from=lohnlab.de;
+ dkim=pass header.d=lohnlab.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lohnlab.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=yzkgZ8k4UwLnx1pcd+YMOlBTyuq4RX2iL/UsfA1e4I8=;
+ b=1R6FKQyoL6gXMzK3QLdnfKdTQ/XdUV7QvfUy6P+o5dlvbFSGdMEujiyXFIXUlFZldLHdB3PtqxQ/hB37yhLwTucPl763NCs25RdH2MDSe50Y95L/gyxaPr6zpG9g3KsO5JUbq3So6BPHNLPBdL1G4YghWcWNnFAha0qCYJDfX7REtUBb8bRhKaUb3JKyr0vXJfBdWrelU438hxp1KUbZeoAtnV4820jXWHh55Q6ZwH1a/v/g7CH5WqUIwormQyKZ0wJAKVLWnDNMqFvmWMyBXQLW4+H/RmhitqiNCQM1bmlBx2ZvI18LQtCIyBxlkaY9wJ9/QuSQ2oObnYgTxt+4wg==
+Received: from BE1P281MB2467.DEUP281.PROD.OUTLOOK.COM (2603:10a6:b10:6e::13)
+ by FR6P281MB3472.DEUP281.PROD.OUTLOOK.COM (2603:10a6:d10:c5::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.13; Thu, 28 May
+ 2026 07:42:08 +0000
+Received: from BE1P281MB2467.DEUP281.PROD.OUTLOOK.COM
+ ([fe80::5191:26d8:e1f2:81b9]) by BE1P281MB2467.DEUP281.PROD.OUTLOOK.COM
+ ([fe80::5191:26d8:e1f2:81b9%6]) with mapi id 15.21.0071.011; Thu, 28 May 2026
+ 07:42:08 +0000
+From: Lennart Reichert <lr@lohnlab.de>
+To: =?Windows-1252?Q?C=F6rten_Simge?= <Simge.Coerten@dgz-ab.de>, Reisnecker
+ Reiner <Reiner.Reisnecker@stwab.de>
+CC: "nadja.keimig@dgz-ab.de" <nadja.keimig@dgz-ab.de>
+Subject: AW: Anfrage Website Patrick Holy
+Thread-Topic: Anfrage Website Patrick Holy
+Thread-Index: AQHc7i4gitIqXZg8AEmXKP/5PndHqbYjDYaAgAAA6Wk=
+Date: Thu, 28 May 2026 07:42:07 +0000
+Message-ID: <BE1P281MB2467F4303CDA73C9C50524EEA1092@BE1P281MB2467.DEUP281.PROD.OUTLOOK.COM>
+References: <BE1P281MB2467ED1C036510660567437AA1082@BE1P281MB2467.DEUP281.PROD.OUTLOOK.COM>
+ <001301dcee74$f1e3afc0$d5ab0f40$@dgz-ab.de>
+In-Reply-To: <001301dcee74$f1e3afc0$d5ab0f40$@dgz-ab.de>
+Accept-Language: de-DE, en-US
+Content-Language: de-DE
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator:
+x-ms-reactions: allow
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=lohnlab.de;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BE1P281MB2467:EE_|FR6P281MB3472:EE_
+x-ms-office365-filtering-correlation-id: c3c5ede1-4388-4811-b161-08debc8c9f12
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|376014|6049299003|1800799024|4053099003|4013099003|8096899003|13003099007|18002099003|22082099003|38070700021|6133799003|4143699003|56012099006;
+x-microsoft-antispam-message-info: WFl9qx6D16RsiQurlfUeJv+iuUEny0zB+jfGylW8Q2znCPp0eJBAU/So0bBQu9zLcLZ27lg41cYWDQWiNPS19XNeoCSlXSpnRnXPoYlX5vrV1fnt+qaBE9gBV75alpkhoIf4fCIlM2F4jARloYwa5n57TxRju1z0OwFGI7GWkilcBss/c8H+/Im+Y/ryBr8LlYLa5auxlx1hzZQOawKIqPUrVpUyOmXh74fWxDlP1pOl54QhDVTQVPHEZEOAtCNziBGai4vUW9w/JCPwT1CKkGtIscqjJNtvPIr2EUcuOn3JYz7eKfFBBQhSszPbD6frRSOD7Az6UnUj5Eb9eLNXH49TeK6b/u3Iz+fn4F9s9lE+LPqhOq+BPmWSwt8O2NdyRqZdjEGathyItLYNhEdLMgITwHRfyfUaNrZxpBznJBQ1i/xW2RazG+Hj4D4Lk5HUnnvVdrz0rom/L2NkcrQKUXhMvxRXlAzxNR17nRPcdRKDZqcdW1nlXQjwqNDz9DJTqD5iH4yppwN5Hdz4i1gG3ULGBTcfS1/UtJNqQdloNogQG7MLTpE9i30JUMDUQLmpsgEZfT7zMvXcebgl5g08ZZ7ioed53FmaCZQ67vijKHo3tAK/8PLGA/aXMfVOYBChAEm0UAXZd2TDg3tEzvkCzh3/BXMOoP5Ivgf08bCH4ALt3zaaLy6NxN2B7jszNWcLyZNlVGT007qaIk2IDrd+fg==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:de;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BE1P281MB2467.DEUP281.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(6049299003)(1800799024)(4053099003)(4013099003)(8096899003)(13003099007)(18002099003)(22082099003)(38070700021)(6133799003)(4143699003)(56012099006);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?Windows-1252?Q?qhGg713kK8wBdbh21Bx/nG7kKJF6yUZt+NA43j6uNAT2momE1xbphw9x?=
+ =?Windows-1252?Q?5mU2hob3+YTJIsznT8dvUEef20lh1VqrDH9MurVMb2VOMi3HVFzvYCg2?=
+ =?Windows-1252?Q?2yLa8Tf5pfYSA0JNHS+5IjJVc3SyE/pE6VstkskMVl+PTTWiBtsuOJ/O?=
+ =?Windows-1252?Q?T5FHVDIgEcUyY6KzDKzQO/6Sn0Dr71lvTBNB3q5Hh55fbKDFp3vxwuxC?=
+ =?Windows-1252?Q?5v+GR/G+ZwFvx5TUZE7kjjoFxsEiHWQd44UpTQ1kTFJlArTICVIe8QVG?=
+ =?Windows-1252?Q?fMRJDaZuYcr/m1pQO3K3HigJUHFpHS0cZrqJug0L6cI986EUZs8A7gVf?=
+ =?Windows-1252?Q?B3SmLnnXSQ+adi0psDTsNlSzHkKuSINEL9UwFoZTAmoyNoRMa+ov7cMs?=
+ =?Windows-1252?Q?on08QgjQAtjAKJyyvKITClIFSJMxq86ktlUvYYMWjK8NRu6bawqnMwku?=
+ =?Windows-1252?Q?O7ntCbquvdqTJRMnKoqCk2fXlrp6CQEXt8JylMRsBj05GoHY/CpUAzk4?=
+ =?Windows-1252?Q?f6gVS5lsQoHOZ28votB1ZbpRroWIqC/HadLn9Cfy3kDxaaMzm0kxWHhE?=
+ =?Windows-1252?Q?j8yN4A9ZVZYYCaeti9SvU1rHq/2nLUiqcpkabsYmQogU4EtxjBp5PX3P?=
+ =?Windows-1252?Q?Cs7pdADEEK57+K0ZDmVbth+2JujjGHtORUAlnZuxyzIFConnskxu/xC0?=
+ =?Windows-1252?Q?aF/TmZf0Nfyu+wRKhGUZl127+SqjJgpyZK4N/VhZPVFtnkj8wI9aRW3J?=
+ =?Windows-1252?Q?OS7F4fnzrQ9iSWPaGpiwdMK1yDFuGyLK1V3ApbMgAdkthWz0z49uHOi0?=
+ =?Windows-1252?Q?rqYTB/XhacdXEAc6wNx0DKh4JXI4R7tSPy3uTCMGeORbdb/yI/JW7/1p?=
+ =?Windows-1252?Q?jM7Goik+zg/fqKMRWw8fLuqIyJQRLLGnDSEc1n7yjr6zNvfZF0Xfpmtl?=
+ =?Windows-1252?Q?4BCm7tf9+nimZ5IcRLVFmj1nmagqL7y774PxowlSCDza6Vh3jS/TV+m6?=
+ =?Windows-1252?Q?QCtNNP6R9yZ5TDfm+Ti+9gCkMi8CML2eQsM1Ucw2sfKJWf1YACbdwfcv?=
+ =?Windows-1252?Q?SCwhb9C2KqdR+GPUk0K2soDMyUsF6IFurkz2TmlKXxysB24/tTAk3Ath?=
+ =?Windows-1252?Q?RlpFxrIaX8Iguf3ifCwOyXDqQB1QPraZrqms4LlBy7sfICJgi0wNQzUW?=
+ =?Windows-1252?Q?lsM+TpcM9kd1/XtvDwSDWHdoSpPtTBxT5TrA5jQCp13A3XbZMogqgOJB?=
+ =?Windows-1252?Q?vwZOD1MfPjFzx4s1j+44dfpqZdQCMUKYz9C/ZldnKBFiTAzHLySMWoj6?=
+ =?Windows-1252?Q?BkNvpN0iebRmqG4V8NIIlL9TSJeU5z0tUBSlk/f79ywK2R7LYhCQ3hZj?=
+ =?Windows-1252?Q?R21UVifNh5xzJvrceHZnKtbarw0rkXi7585yGEHTrxWxxmlzuA3P03rU?=
+ =?Windows-1252?Q?O3M1vIZ0OyH2ZoIlvmCZoDlsN1u9EMGl3k87f5qGVVesPwbfTvweo7GQ?=
+ =?Windows-1252?Q?P02NHdAzp2hxXtW99L+AtRFLEYstSWpzQfZAiSJw8CrTb9Yjj+SL4QQi?=
+ =?Windows-1252?Q?GTzyVjGSo2WlEAzbkA5rfcuIPi1K7glRNiJNp2Wf7M4Y0N72tnW8K6Oy?=
+ =?Windows-1252?Q?Ea31d5AvnqXjM2RMsjY8xNAUgyOAVCNYH2U3ujpoaL57rrmjLX0r23ud?=
+ =?Windows-1252?Q?kbDLtbhutETMm4cnDma8LFPacO0L7WLBBPBWwAU3jAHI8Z1Lg2t/F5pQ?=
+ =?Windows-1252?Q?K3AAnzVnEQkr2/cVlTpP9EEgdolpVxJyVvDZGRv9I3P7BICofZUxd7du?=
+ =?Windows-1252?Q?JeBU8y/D5+6l2Fgbz3TsstVwVQ2DWUY4xsrgEi44C40N6QsWpADv+E8p?=
+ =?Windows-1252?Q?khl+5xWZ+ennxQ=3D=3D?=
+Content-Type: multipart/related;
+	boundary="_004_BE1P281MB2467F4303CDA73C9C50524EEA1092BE1P281MB2467DEUP_";
+	type="multipart/alternative"
+MIME-Version: 1.0
+X-OriginatorOrg: lohnlab.de
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BE1P281MB2467.DEUP281.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-Network-Message-Id: c3c5ede1-4388-4811-b161-08debc8c9f12
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 May 2026 07:42:07.7056
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: e2edaf60-52f6-492c-bc6a-0181d8c5de4c
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: PpFx6tYBNzrkcfHHF35xQQDR0pqxHbz9floKCIknrsBA7ag+LQIe59yDuMuPGRBw
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: FR6P281MB3472
