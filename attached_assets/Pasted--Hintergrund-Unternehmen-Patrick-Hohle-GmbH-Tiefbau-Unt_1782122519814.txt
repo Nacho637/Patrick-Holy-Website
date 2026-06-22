@@ -1,0 +1,103 @@
+### Hintergrund
+
+**Unternehmen:** Patrick Hohle GmbH – Tiefbau-Unternehmen aus der Region mit etwa 40 Mitarbeitern (6-7 im Büro, Rest gewerblich) 
+
+**Hauptkunden:** Langfristige Zusammenarbeiten mit kommunalen Auftraggebern wie Stadtwerken, Wasserversorgern (z.B. AVG als Hauptvertragspartner mit 24h-Permanentbereitschaft), Bayernhafen 
+
+**Besonderheiten:**
+
+- Unternehmen ist seit 1995 aktiv (hervorgegangen aus BMS Baubetreuung GmbH)
+- AVG ist am Unternehmen beteiligt
+- Vor 4-5 Jahren neues Gebäude bezogen
+- Notfallbereitschaft und Winterdienst für öffentliche Auftraggeber (Staatliches Bauamt, Tiefbauamt, früher Klinikum)
+
+**Aktuelle Auftragslage:** Gut ausgelastet, **keine neuen Kunden gewünscht** – "Unser Kundenstamm, den wir haben, den können wir gerade so betrieben" 
+
+### Wichtige Anwendungsfälle und Bedürfnisse
+
+**Hauptbedarf: Mitarbeitergewinnung** 
+
+Das zentrale Ziel der neuen Website ist die **Rekrutierung von Fachkräften**, nicht die Kundenakquise. 
+
+**Gesuchte Positionen:**
+
+- **Stahlschweißer (höchste Priorität)** – extrem schwer zu finden, speziell Rohrleitungsbauschweißer, die "im Dreck" arbeiten
+- Tiefbau-Facharbeiter und Straßenbauer
+- LKW-Fahrer, Baggerfahrer
+- Bauhelfer
+- Potenziell Azubis (aktuell null, aber Kapazität vorhanden)
+
+**Website-Fokus:**
+
+- Karriereseite mit selbst pflegbarem Stellenanzeigensystem
+- Darstellung der Firmenkultur und Benefits für potenzielle Mitarbeiter
+- Übersichtsseite zu Leistungen (Tiefbau, Winterdienst etc.) auf der Startseite, keine separaten Unterseiten pro Leistung
+- Über-uns-Seite mit Firmengeschichte, Zitaten von Mitarbeitern, Teamgröße
+- Integration aktueller Facebook-Posts (sobald Facebook reaktiviert ist)
+- Mobile-optimiert und modernes Design mit CI-Farben (Blau, Gelb, Schwarz)
+
+**Employee Value Proposition:**
+
+- **Mitarbeiter-wirbt-Mitarbeiter-Prämie:** 750€ nach Probezeit + 750€ nach einem Jahr; für LKW-Fahrer verdoppelt; für Schweißer 2x2.000€
+- **Tarifvertrag Bauhauptgewerbe** mit übertariflicher Bezahlung möglich ("50-100 Euro mehr" als letztes Gehalt)
+- 30 Tage Urlaub
+- 
+    1. Monatsgehalt (100% im November) 
+- Getränke, Softdrinks frei verfügbar
+- Klimatisiertes Büro, Bürohunde erlaubt
+- **Wertschätzung und Verpflegung während Bereitschaftsdiensten** – besonders hervorzuheben
+- Engagement des Inhabers bei der Feuerwehr, bezahlte Ausrückzeiten für Ehrenamt
+- **Sichere Auftragslage** durch langfristige kommunale Verträge
+- Unterstützung bei Integration ausländischer Mitarbeiter (aktuell 2 syrische Mitarbeiter)
+- Flache Hierarchien
+
+**Technische Umsetzung:**
+
+- Umzug auf moderne Hosting-Plattform (Vercel)
+- Code in GitHub, voller Zugang für Kunden
+- Domain bleibt gleich, nahtlose Umstellung
+
+**Zusätzliche Ideen:**
+
+- Strukturierte Kontaktformulare statt unstrukturierter E-Mails (muss noch konkretisiert werden)
+- Bewerbungsplattform "Join" testen (erste Stellenanzeige kostenlos, verteilt auf StepStone, Indeed, LinkedIn)
+- Später eventuell Social-Media-Recruiting über Meta Ads (Facebook/Instagram) mit Mitarbeiter-Videos
+- Amtsblatt-Anzeigen in umliegenden Gemeinden (z.B. Weibesbrunn für Schweißer)
+
+### Wichtige Bedenken
+
+**Herausforderungen bei der Mitarbeitergewinnung:**
+
+- "Diese Ausbildungskurve geht halt nach hinten, nach unten" – genereller Fachkräftemangel im Handwerk
+- Schweißer sind extrem schwer zu bekommen: "Schweißer bist du nicht, Schweißer bist du" – es braucht besonderes Talent
+- Unterschied zwischen Hallenschweißern und Rohrleitungsbauschweißern, die im Außenbereich arbeiten
+- Arbeitsbedingungen sind hart: "Die Arbeit draußen bei Winterbett, im Dreck, ist schon scheiße"
+- Regionale Lage erschwert Rekrutierung: "kein Bauern oder Facharbeiter aus Frankfurt hierher wechseln in die Provinz"
+- Für Schweißer ist sichere Auftragslage kein starkes Argument, da sie überall Optionen haben
+
+**Facebook-Problematik:**
+
+- Facebook-Seite ist komplett leer/gelöscht – Verdacht auf versehentliches Löschen
+- War früher aktiv, jetzt nicht mehr erreichbar
+- **Empfehlung:** Reaktivieren, da Facebook sehr effektiv für die Zielgruppe ist und alle Mitarbeiter Zugriff zum Posten hatten
+
+**Integration internationaler Mitarbeiter:**
+
+- Sehr aufwendige Bürokratie bei der Arbeitserlaubnis
+- "Ich behaupte, man will es gar nicht" – systemische Hürden bei Behörden
+
+**Ehrlichkeit vs. Recruiting:**
+
+- Balance zwischen realistischer Darstellung der harten Arbeitsbedingungen und Attraktivität für Bewerber
+- Bei Azubis besonders wichtig, ehrlich zu sein, um Abbrüche zu vermeiden
+
+**Online-Recruiting-Effektivität:**
+
+- Unsicherheit, ob gewerbliche Mitarbeiter online nach Jobs suchen
+- Mitarbeiter-wirbt-Mitarbeiter funktioniert aktuell am besten (fast 100% Erfolgsquote bei Bewerbungsgesprächen)
+- Website ist dennoch wichtig, da sie das Erste ist, was Online-Bewerber nach der Stellenanzeige ansehen
+
+**Website-Ausrichtung:**
+
+- Entscheidung zwischen kundenorientierter vs. mitarbeiterorientierter Ausrichtung – Fokus klar auf Mitarbeitergewinnung
+- Notfallbereitschaft eventuell nicht prominent bewerben, da Zielkunden bereits Bescheid wissen
