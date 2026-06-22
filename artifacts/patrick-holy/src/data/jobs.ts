@@ -2,23 +2,34 @@ import { Job } from "@/types";
 
 export const jobsData: Job[] = [
   {
-    id: "tiefbaufacharbeiter",
-    title: "Tiefbaufacharbeiter (m/w/d)",
+    id: "stahlschweisser",
+    title: "Stahlschweißer / Rohrleitungsbauschweißer (m/w/d)",
+    type: "Vollzeit",
+    urgent: true,
+    tagline: "Unsere dringendste offene Stelle – wir suchen dich!",
+    highlights: [
+      "Schweißarbeiten im Rohrleitungs- und Tiefbau",
+      "Sonderprämie über Mitarbeiter-werben-Mitarbeiter: 2 × 2.000 €",
+    ],
+  },
+  {
+    id: "bauhelfer",
+    title: "Bauhelfer (m/w/d)",
     type: "Vollzeit",
   },
   {
-    id: "strassenbauer",
-    title: "Straßenbauer (m/w/d)",
+    id: "lkw-fahrer",
+    title: "LKW-Fahrer (m/w/d)",
     type: "Vollzeit",
   },
   {
-    id: "kraftfahrer",
-    title: "Kraftfahrer/in (m/w/d)",
+    id: "baggerfahrer",
+    title: "Baggerfahrer (m/w/d)",
     type: "Vollzeit",
   },
   {
-    id: "azubi-tiefbaufacharbeiter",
-    title: "Auszubildende/r Tiefbaufacharbeiter",
-    type: "Ausbildung",
-  }
+    id: "tiefbau-strassenbau",
+    title: "Tiefbau- / Straßenbaufacharbeiter (m/w/d)",
+    type: "Vollzeit",
+  },
 ];

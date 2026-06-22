@@ -4,10 +4,9 @@ import { Link } from "wouter";
 import { Users, CheckCircle2, Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "@/components/shared/SectionHeader";
-import { companyData } from "@/data/company";
 
 const STATS = [
-  "365 Tage Bereitschaft",
+  "Seit 1995 am Markt",
   "DVGW + TÜV zertifiziert",
   "Eigene Werkstatt",
 ];
@@ -70,7 +69,7 @@ export default function AboutPage() {
             <StatsCarousel />
           </div>
           <div className="hidden md:flex flex-wrap justify-center gap-8 md:gap-16 text-center font-bold text-lg md:text-xl">
-            <div>365 Tage Bereitschaft</div>
+            <div>Seit 1995 am Markt</div>
             <div className="hidden md:block w-1.5 h-1.5 rounded-full bg-primary/30 my-auto" />
             <div>DVGW + TÜV zertifiziert</div>
             <div className="hidden md:block w-1.5 h-1.5 rounded-full bg-primary/30 my-auto" />
@@ -98,9 +97,9 @@ export default function AboutPage() {
               <p>
                 Um unsere hohe Qualität stets garantieren zu können, investieren wir kontinuierlich
                 in unseren modernen Fuhrpark, der in unserer eigenen Fachwerkstatt in Schweinheim
-                gewartet wird. So sind wir nicht nur für große Projekte optimal gerüstet, sondern
-                gewährleisten auch unsere 365 Tage / 24 Stunden Notfallbereitschaft für
-                Aschaffenburg und die umliegenden Gemeinden.
+                gewartet wird. So sind wir für große Projekte in Aschaffenburg und den umliegenden
+                Gemeinden optimal gerüstet – und bieten unserem Team einen sicheren, modern
+                ausgestatteten Arbeitsplatz.
               </p>
             </div>
           </div>

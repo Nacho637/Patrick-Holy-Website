@@ -120,11 +120,11 @@ export default function Header() {
             asChild
             variant="default"
             className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold"
-            data-testid="button-header-phone"
+            data-testid="button-header-apply"
           >
-            <Link href="/kontakt" className="flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              <span>{companyData.contact.phone}</span>
+            <Link href="/karriere#offene-stellen" className="flex items-center gap-2">
+              <Briefcase className="w-4 h-4" />
+              <span>Jetzt bewerben</span>
             </Link>
           </Button>
         </div>
@@ -257,13 +257,14 @@ export default function Header() {
                   asChild
                   className="w-full h-12 bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-base rounded-xl shadow-lg shadow-black/20"
                 >
-                  <a
-                    href={`tel:${companyData.contact.phone.replace(/[\s/-]/g, "")}`}
+                  <Link
+                    href="/karriere#offene-stellen"
+                    onClick={() => setMenuOpen(false)}
                     className="flex items-center justify-center gap-2"
                   >
-                    <Phone className="w-5 h-5" />
-                    <span>Notfall 24/7 anrufen</span>
-                  </a>
+                    <Briefcase className="w-5 h-5" />
+                    <span>Jetzt bewerben</span>
+                  </Link>
                 </Button>
               </div>
             </SheetContent>

@@ -34,4 +34,7 @@ export interface Job {
   id: string;
   title: string;
   type: string;
+  urgent?: boolean;
+  tagline?: string;
+  highlights?: string[];
 }

@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Briefcase, ArrowRight } from "lucide-react";
 import { companyData } from "@/data/company";
 
 export default function Footer() {
@@ -34,6 +34,15 @@ export default function Footer() {
                 </div>
               </li>
               <li className="flex items-center gap-3 text-blue-100">
+                <Phone className="w-5 h-5 text-accent shrink-0" />
+                <a
+                  href={`tel:${companyData.contact.phone.replace(/[\s/-]/g, "")}`}
+                  className="hover:text-white transition-colors"
+                >
+                  {companyData.contact.phone}
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-blue-100">
                 <Mail className="w-5 h-5 text-accent shrink-0" />
                 <a
                   href={`mailto:${companyData.contact.email}`}
@@ -58,18 +67,19 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="bg-white/10 rounded-lg p-4 border border-white/20">
-              <div className="flex items-center gap-2 text-accent font-bold mb-1">
-                <Phone className="w-4 h-4" />
-                <span>Notfall 24h Bereitschaft</span>
+            <Link
+              href="/karriere#offene-stellen"
+              className="group block bg-accent text-accent-foreground rounded-lg p-4 hover:bg-accent/90 transition-colors"
+            >
+              <div className="flex items-center gap-2 font-bold mb-1">
+                <Briefcase className="w-4 h-4" />
+                <span>Wir stellen ein!</span>
               </div>
-              <a
-                href={`tel:${companyData.contact.phone.replace(/[\s/-]/g, "")}`}
-                className="text-xl font-bold text-white hover:text-accent transition-colors block"
-              >
-                {companyData.contact.phone}
-              </a>
-            </div>
+              <span className="flex items-center gap-1 text-sm font-semibold">
+                Offene Stellen ansehen
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
           </div>
 
           <div>

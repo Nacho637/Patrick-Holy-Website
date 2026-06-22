@@ -52,18 +52,17 @@ export default function TrustSection() {
             <p className="text-blue-200 text-xs">Geprüfte Qualität & Sicherheit</p>
           </motion.div>
 
-          {/* 365/24 — custom design */}
+          {/* Team size — custom design */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
             className="flex flex-col items-center justify-center text-center gap-3"
-            data-testid="badge-bereitschaft"
+            data-testid="badge-team"
           >
             <div className="relative h-28 md:h-32 flex items-center md:items-end justify-center">
               <div className="relative h-20 w-20 md:h-24 md:w-24">
-                <span className="absolute inset-0 inline-flex rounded-full bg-accent/20 animate-ping" />
               <div
                 className="relative h-20 w-20 md:h-24 md:w-24 rounded-full flex items-center justify-center"
                 style={{
@@ -74,15 +73,15 @@ export default function TrustSection() {
                 }}
               >
                 <div className="text-center leading-none">
-                  <div className="font-extrabold text-[22px] md:text-[26px] text-[#213d86] tracking-tight">365</div>
+                  <div className="font-extrabold text-[26px] md:text-[30px] text-[#213d86] tracking-tight">40</div>
                   <div className="w-10 h-px bg-[#213d86]/60 mx-auto my-1" />
-                  <div className="font-extrabold text-[18px] md:text-[20px] text-[#213d86] tracking-tight">24h</div>
+                  <div className="font-extrabold text-[11px] md:text-[12px] text-[#213d86] tracking-tight uppercase">Kollegen</div>
                 </div>
               </div>
               </div>
             </div>
-            <h3 className="text-white font-bold text-base md:text-lg tracking-wide min-h-[1.75rem] md:min-h-0 flex items-start justify-center">Notfall-Bereitschaft</h3>
-            <p className="text-blue-200 text-xs">Wir sind immer für Sie da</p>
+            <h3 className="text-white font-bold text-base md:text-lg tracking-wide min-h-[1.75rem] md:min-h-0 flex items-start justify-center">Starkes Team</h3>
+            <p className="text-blue-200 text-xs">Werde Teil davon</p>
           </motion.div>
 
           {/* Google Reviews */}

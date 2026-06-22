@@ -19,11 +19,10 @@ export const companyData = {
   },
   stats: {
     employees: "ca. 40",
-    emergency: "365 Tage / 24 Stunden",
     googleRating: "4,8 / 5",
   },
   certifications: ["DVGW", "TÜV"],
   social: {
     facebook: "https://www.facebook.com/Patrick.Holy.GmbH",
-  }
+  },
 };

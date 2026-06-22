@@ -3,14 +3,16 @@ import {
   ArrowRight,
   Mail,
   GraduationCap,
-  Home,
-  MapPin,
-  Truck,
   Flame,
-  BookOpen,
-  Award,
   Heart,
+  Gift,
+  Banknote,
+  CalendarDays,
+  Utensils,
+  ShieldCheck,
   Users,
+  Dog,
+  Globe,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "@/components/shared/SectionHeader";
@@ -19,38 +21,55 @@ import { companyData } from "@/data/company";
 
 const benefits = [
   {
-    icon: Home,
-    title: "Familiäres Unternehmen",
-    desc: "Sichere Arbeitsplätze in einem gesunden Betrieb seit 1995.",
+    icon: Banknote,
+    title: "Tarifvertrag Bauhauptgewerbe",
+    desc: "Faire Bezahlung nach Tarif – mit in der Regel großzügiger Eingruppierung.",
   },
   {
-    icon: MapPin,
-    title: "Regionale Verwurzelung",
-    desc: "Baustellen vorwiegend in Aschaffenburg und der direkten Umgebung.",
+    icon: CalendarDays,
+    title: "30 Tage Urlaub & 13. Gehalt",
+    desc: "Volle 30 Urlaubstage und ein 13. Monatsgehalt, das zu 100 % im November ausgezahlt wird.",
   },
   {
-    icon: Truck,
-    title: "Moderner Fuhrpark",
-    desc: "Top gewartete Maschinen und Fahrzeuge dank eigener Werkstatt.",
+    icon: Gift,
+    title: "Mitarbeiter werben Mitarbeiter",
+    desc: "750 € nach bestandener Probezeit + 750 € nach einem Jahr. Für Stahlschweißer 2 × 2.000 €.",
+  },
+  {
+    icon: Utensils,
+    title: "Verpflegung bei Bereitschaft",
+    desc: "Bei Nacht- und Bereitschaftsdiensten sorgen wir für deine Verpflegung – Wertschätzung, die ankommt.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Sichere Auftragslage",
+    desc: "Langfristige Verträge mit großen Auftraggebern (u. a. AVG) bedeuten einen sicheren Arbeitsplatz.",
   },
   {
     icon: Flame,
-    title: "Gelebte Unternehmenskultur",
-    desc: "Z.B. Freistellung für ehrenamtliche Feuerwehreinsätze bei vollem Lohn.",
+    title: "Ehrenamt wird unterstützt",
+    desc: "Unser Chef ist selbst bei der Feuerwehr – Ausrückzeiten fürs Ehrenamt werden bezahlt freigestellt.",
   },
   {
-    icon: BookOpen,
-    title: "Seminare & Schulungen",
-    desc: "Kontinuierliche Weiterbildung für alle Mitarbeiter.",
+    icon: Users,
+    title: "Flache Hierarchien",
+    desc: "Kurze Wege, gute Teamchemie und ein familiäres Miteinander statt anonymer Konzernstrukturen.",
   },
   {
-    icon: Award,
-    title: "Top Ausbildung",
-    desc: "Fundierte Betreuung durch unseren Straßenbauermeister Alexander Sauer.",
+    icon: Globe,
+    title: "Integration & Vielfalt",
+    desc: "Wir unterstützen ausländische Mitarbeitende aktiv – auch durch den bürokratischen Dschungel.",
+  },
+  {
+    icon: Dog,
+    title: "Angenehmes Arbeitsumfeld",
+    desc: "Klimatisiertes Büro und ein Bürohund inklusive – bei uns stimmt auch das Drumherum.",
   },
 ];
 
 export default function CareerPage() {
+  const urgent = jobsData.find((j) => j.urgent);
+
   return (
     <div className="w-full">
       {/* Hero with team photo */}
@@ -90,10 +109,49 @@ export default function CareerPage() {
         </div>
       </section>
 
+      {/* Urgent Position Banner */}
+      {urgent && (
+        <section className="bg-accent text-accent-foreground">
+          <div className="container mx-auto px-4 py-10 md:py-12">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div>
+                <div className="inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider mb-2">
+                  <Flame className="w-4 h-4" />
+                  Dringend gesucht
+                </div>
+                <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">
+                  {urgent.title}
+                </h2>
+                {urgent.tagline && (
+                  <p className="mt-2 font-medium opacity-90 max-w-2xl">{urgent.tagline}</p>
+                )}
+              </div>
+              <Button
+                asChild
+                size="lg"
+                className="shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 font-bold h-14 px-8"
+                data-testid="button-urgent-apply"
+              >
+                <a
+                  href={`mailto:${companyData.contact.email}?subject=Bewerbung: ${urgent.title}`}
+                  className="flex items-center gap-2"
+                >
+                  Jetzt bewerben <Mail className="w-4 h-4" />
+                </a>
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Benefits */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4">
-          <SectionHeader title="Warum Patrick Holy GmbH?" subtitle="Deine Vorteile" alignment="center" />
+          <SectionHeader
+            title="Deine Vorteile bei uns"
+            subtitle="Was wir bieten"
+            alignment="center"
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
             {benefits.map((benefit, idx) => {
@@ -104,7 +162,7 @@ export default function CareerPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.08 }}
+                  transition={{ delay: (idx % 3) * 0.08 }}
                   className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all"
                   data-testid={`card-benefit-${idx}`}
                 >
@@ -116,6 +174,39 @@ export default function CareerPage() {
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Referral Bonus Highlight */}
+      <section className="py-20 bg-primary text-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
+              <Gift className="w-4 h-4" />
+              Prämie sichern
+            </div>
+            <h2 className="text-3xl md:text-4xl font-extrabold">
+              Mitarbeiter werben Mitarbeiter
+            </h2>
+            <p className="text-blue-100 mt-4 max-w-2xl mx-auto">
+              Du kennst jemanden, der zu uns passt? Empfiehl uns weiter – wir bedanken uns
+              doppelt.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white/5 border border-white/15 rounded-2xl p-8 text-center">
+              <div className="text-4xl font-extrabold text-accent mb-2">750 €</div>
+              <p className="text-blue-50 font-semibold">nach bestandener Probezeit</p>
+            </div>
+            <div className="bg-white/5 border border-white/15 rounded-2xl p-8 text-center">
+              <div className="text-4xl font-extrabold text-accent mb-2">+ 750 €</div>
+              <p className="text-blue-50 font-semibold">nach einem Jahr Betriebszugehörigkeit</p>
+            </div>
+            <div className="bg-accent text-accent-foreground rounded-2xl p-8 text-center shadow-xl">
+              <div className="text-4xl font-extrabold mb-2">2 × 2.000 €</div>
+              <p className="font-semibold">Sonderprämie für Stahlschweißer</p>
+            </div>
           </div>
         </div>
       </section>
@@ -188,17 +279,43 @@ export default function CareerPage() {
             {jobsData.map((job) => (
               <div
                 key={job.id}
-                className="bg-white border border-gray-200 rounded-xl p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm hover:border-primary hover:shadow-md transition-all group"
+                className={`bg-white rounded-xl p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm hover:shadow-md transition-all group ${
+                  job.urgent
+                    ? "border-2 border-accent"
+                    : "border border-gray-200 hover:border-primary"
+                }`}
                 data-testid={`card-job-${job.id}`}
               >
                 <div>
-                  <div className="inline-block px-3 py-1 bg-accent/20 text-accent-foreground font-semibold text-sm rounded-full mb-3">
-                    {job.type}
+                  <div className="flex flex-wrap items-center gap-2 mb-3">
+                    {job.urgent && (
+                      <span className="inline-flex items-center gap-1 px-3 py-1 bg-accent text-accent-foreground font-bold text-sm rounded-full">
+                        <Flame className="w-3.5 h-3.5" />
+                        Dringend gesucht
+                      </span>
+                    )}
+                    <span className="inline-block px-3 py-1 bg-primary/10 text-primary font-semibold text-sm rounded-full">
+                      {job.type}
+                    </span>
                   </div>
                   <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
                     {job.title}
                   </h3>
                   <p className="text-muted-foreground mt-2">Einsatzort: Aschaffenburg & Umgebung</p>
+                  {job.highlights && (
+                    <ul className="mt-3 space-y-1">
+                      {job.highlights.map((h, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-foreground">
+                          <ArrowRight className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  <p className="text-xs text-muted-foreground italic mt-3">
+                    Ausführliche Stellenbeschreibung (Aufgaben, Anforderungen, Gehalt) folgt in
+                    Kürze.
+                  </p>
                 </div>
                 <Button asChild size="lg" className="shrink-0 font-bold">
                   <a href={`mailto:${companyData.contact.email}?subject=Bewerbung: ${job.title}`}>
@@ -223,6 +340,28 @@ export default function CareerPage() {
             unseres erfahrenen Straßenbauermeisters <strong>Alexander Sauer</strong> garantieren wir
             eine erstklassige und praxisnahe Ausbildung im Tief- und Straßenbau.
           </p>
+        </div>
+      </section>
+
+      {/* Mitarbeiterstimmen Placeholder */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <SectionHeader title="Stimmen aus dem Team" subtitle="Bald hier" alignment="center" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+            {[0, 1].map((i) => (
+              <div
+                key={i}
+                className="rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 p-8 flex flex-col items-center justify-center text-center min-h-[180px]"
+                data-testid={`placeholder-quote-${i}`}
+              >
+                <Users className="w-8 h-8 text-primary/30 mb-3" />
+                <p className="font-bold text-foreground/70">Mitarbeiter-Statement</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Echte Stimmen unserer Kollegen folgen in Kürze.
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

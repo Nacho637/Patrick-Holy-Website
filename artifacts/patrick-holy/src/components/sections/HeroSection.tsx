@@ -1,8 +1,7 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight } from "lucide-react";
-import { companyData } from "@/data/company";
+import { ArrowRight, Briefcase } from "lucide-react";
 
 export default function HeroSection() {
   return (
@@ -34,7 +33,7 @@ export default function HeroSection() {
               }}
             >
               <span className="text-[11px] md:text-xs font-extrabold tracking-[0.18em] uppercase text-white">
-                Ihr Partner in Aschaffenburg
+                Dein Arbeitgeber in Aschaffenburg
               </span>
               <span className="h-3.5 w-px bg-white/40" />
               <span className="text-[11px] md:text-xs font-extrabold tracking-[0.18em] uppercase text-accent">
@@ -44,11 +43,12 @@ export default function HeroSection() {
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
-            Tiefbau. Straßenbau. Rohrleitung.
+            Bau mit uns deine Zukunft.
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Wir realisieren Ihre Bauprojekte zuverlässig, termingerecht und mit höchster Qualität. Mit 365 Tage 24/7 Notfallbereitschaft.
+            Sichere Arbeitsplätze, faire Bezahlung nach Tarif und ein echtes Team im Tief- und
+            Straßenbau. Werde Teil der Patrick Holy GmbH.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -57,21 +57,21 @@ export default function HeroSection() {
               size="lg"
               className="w-72 sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-lg h-14 px-8"
             >
-              <Link href="/kontakt" className="flex items-center gap-2">
-                Kontakt aufnehmen
-                <ArrowRight className="w-5 h-5" />
+              <Link href="/karriere#offene-stellen" className="flex items-center gap-2">
+                <Briefcase className="w-5 h-5" />
+                Offene Stellen ansehen
               </Link>
             </Button>
             <Button
               asChild
               size="lg"
-              variant="destructive"
-              className="w-72 sm:w-auto font-bold text-lg h-14 px-8 shadow-lg shadow-red-500/20"
+              variant="outline"
+              className="w-72 sm:w-auto font-bold text-lg h-14 px-8 bg-white/10 text-white border-white/40 hover:bg-white/20 hover:text-white backdrop-blur-sm"
             >
-              <a href={`tel:${companyData.contact.phone.replace(/[\s/-]/g, '')}`} className="flex items-center gap-2">
-                <Phone className="w-5 h-5" />
-                Notfall? Jetzt anrufen
-              </a>
+              <Link href="/ueber-uns" className="flex items-center gap-2">
+                Über uns
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </Button>
           </div>
         </motion.div>

@@ -19,7 +19,7 @@ function ScrollToTop() {
   const [location] = useLocation();
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    if (params.get("service")) return;
+    if (params.get("topic")) return;
     window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
   }, [location]);
   return null;
