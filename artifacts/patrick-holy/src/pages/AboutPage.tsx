@@ -84,15 +84,15 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             <SectionHeader title="Unsere Geschichte" subtitle="Entwicklung">
               Die Patrick Holy GmbH ist tief in Aschaffenburg-Schweinheim verwurzelt. Was 1995 aus
-              der BMS Baubetreuung GmbH hervorging, hat sich zu einem der verlässlichsten
-              Baupartner der Region entwickelt.
+              der BMS Baubetreuung GmbH hervorging, ist heute ein bodenständiger Arbeitgeber mit
+              rund 40 Kolleginnen und Kollegen.
             </SectionHeader>
             <div className="prose prose-lg text-muted-foreground prose-p:leading-relaxed max-w-none">
               <p>
-                Seit über zwei Jahrzehnten stehen wir für kompetente und fachgerechte Ausführung in
-                den Bereichen Tiefbau, Straßenbau, Rohrleitungsbau und Fernwärme. Unser
-                beständiges Wachstum verdanken wir dem Vertrauen unserer Kunden und dem
-                unermüdlichen Einsatz unserer rund 40 Mitarbeiterinnen und Mitarbeiter.
+                Seit über zwei Jahrzehnten arbeiten wir in den Bereichen Tiefbau, Straßenbau,
+                Rohrleitungsbau und Fernwärme. Unser beständiges Wachstum verdanken wir vor allem
+                einem: dem unermüdlichen Einsatz und Zusammenhalt unserer rund 40 Mitarbeiterinnen
+                und Mitarbeiter.
               </p>
               <p>
                 Um unsere hohe Qualität stets garantieren zu können, investieren wir kontinuierlich

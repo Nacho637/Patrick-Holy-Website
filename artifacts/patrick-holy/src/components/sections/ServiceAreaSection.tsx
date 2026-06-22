@@ -37,13 +37,12 @@ export default function ServiceAreaSection() {
 
           <div className="order-1 lg:order-2">
             <SectionHeader
-              title="Unser Einsatzgebiet"
+              title="Wo unsere Teams im Einsatz sind"
               subtitle="Regional Verwurzelt"
               className="mb-8"
             >
-              Wir sind da, wo Sie uns brauchen. Als regional verankertes Unternehmen am
-              bayerischen Untermain kennen wir die lokalen Gegebenheiten und sind schnell vor
-              Ort.
+              Als regional verankertes Unternehmen am bayerischen Untermain sind unsere Teams
+              wohnortnah unterwegs – kurze Anfahrten statt wochenlanger Montage fernab der Heimat.
             </SectionHeader>
 
             <ul className="space-y-4">

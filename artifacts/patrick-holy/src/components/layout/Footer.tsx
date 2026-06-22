@@ -15,8 +15,8 @@ export default function Footer() {
               data-testid="img-footer-logo"
             />
             <p className="text-blue-100 max-w-xs">
-              Ihr zuverlässiger Partner für Tiefbau, Straßenbau und Rohrleitungsbau in
-              Aschaffenburg und Umgebung seit 1995.
+              Sicherer Arbeitgeber im Tief-, Straßen- und Rohrleitungsbau in Aschaffenburg und
+              Umgebung – seit 1995.
             </p>
           </div>
 
