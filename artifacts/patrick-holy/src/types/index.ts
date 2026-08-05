@@ -13,14 +13,6 @@ export interface TeamMember {
   description?: string;
 }
 
-export interface ReferenceProject {
-  id: string;
-  title: string;
-  year: string;
-  description?: string;
-  image: string;
-}
-
 export interface PressArticle {
   id: string;
   source: string;

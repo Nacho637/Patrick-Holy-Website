@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { MapPin, Phone, Mail, Clock, Briefcase, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Briefcase } from "lucide-react";
 import { companyData } from "@/data/company";
 
 export default function Footer() {
@@ -54,32 +54,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="flex flex-col-reverse md:flex-col gap-6">
-            <div>
-              <h3 className="text-xl font-bold mb-6 text-accent">Öffnungszeiten</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3 text-blue-100">
-                  <Clock className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                  <div>
-                    <p>{companyData.hours.mo_do}</p>
-                    <p>{companyData.hours.fr}</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <Link
-              href="/karriere#offene-stellen"
-              className="group block bg-accent text-accent-foreground rounded-lg p-4 hover:bg-accent/90 transition-colors"
-            >
-              <div className="flex items-center gap-2 font-bold mb-1">
-                <Briefcase className="w-4 h-4" />
-                <span>Wir stellen ein!</span>
-              </div>
-              <span className="flex items-center gap-1 text-sm font-semibold">
-                Offene Stellen ansehen
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Link>
+          <div>
+            <h3 className="text-xl font-bold mb-6 text-accent">Öffnungszeiten</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 text-blue-100">
+                <Clock className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                <div>
+                  <p>{companyData.hours.mo_do}</p>
+                  <p>{companyData.hours.fr}</p>
+                </div>
+              </li>
+            </ul>
           </div>
 
           <div>

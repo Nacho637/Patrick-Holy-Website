@@ -3,7 +3,6 @@ import {
   Phone,
   Mail,
   MapPin,
-  X,
   Construction,
   Info,
   Briefcase,
@@ -16,8 +15,10 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [atTop, setAtTop] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [location, setLocation] = useLocation();
+  const isHome = location === "/";
 
   const handleHashNav = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
     const hashIndex = href.indexOf("#");
@@ -41,8 +42,28 @@ export default function Header() {
     let observer: IntersectionObserver | null = null;
     let cancelled = false;
 
+    const onScrollImmediate = () => {
+      const top = window.scrollY <= 0;
+      setScrolled(!top);
+      setAtTop(top);
+    };
+
     const attach = () => {
       if (cancelled) return;
+
+      // Landing, Über-uns, Karriere & Kontakt: Header weiß beim ersten Scrollen
+      if (
+        location === "/" ||
+        location === "/ueber-uns" ||
+        location === "/karriere" ||
+        location === "/kontakt"
+      ) {
+        onScrollImmediate();
+        window.addEventListener("scroll", onScrollImmediate, { passive: true });
+        return;
+      }
+
+      setAtTop(false);
       const hero = document.querySelector<HTMLElement>("[data-hero]");
       if (!hero) {
         setScrolled(true);
@@ -63,6 +84,7 @@ export default function Header() {
       cancelled = true;
       cancelAnimationFrame(raf);
       observer?.disconnect();
+      window.removeEventListener("scroll", onScrollImmediate);
     };
   }, [location]);
 
@@ -74,6 +96,7 @@ export default function Header() {
   ];
 
   const transparent = !scrolled;
+  const showContactBar = isHome && atTop;
 
   const handleMobileLinkClick = (
     e: MouseEvent<HTMLAnchorElement>,
@@ -83,6 +106,8 @@ export default function Header() {
     handleHashNav(e, href);
   };
 
+  const phoneHref = `tel:${companyData.contact.phone.replace(/[\s/-]/g, "")}`;
+
   return (
     <header
       data-testid="header-main"
@@ -90,6 +115,56 @@ export default function Header() {
         transparent ? "bg-transparent" : "bg-white shadow-md"
       }`}
     >
+      {/* Kontakt-Leiste — nur Landingpage, nur am Seitenanfang */}
+      <div
+        data-testid="header-contact-bar"
+        className={`hidden md:grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ${
+          showContactBar
+            ? "grid-rows-[1fr] opacity-100"
+            : "grid-rows-[0fr] opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="min-h-0">
+          <div
+            className={`border-b transition-colors duration-300 ${
+              transparent
+                ? "border-white/15 bg-transparent text-white"
+                : "border-gray-100 bg-white text-foreground"
+            }`}
+          >
+            <div className="container mx-auto px-4 md:px-6 h-9 flex items-center justify-between text-xs tracking-wide">
+              <div className="flex items-center gap-5">
+                <a
+                  href={phoneHref}
+                  className="inline-flex items-center gap-1.5 hover:text-accent transition-colors"
+                >
+                  <Phone className="w-3.5 h-3.5 shrink-0" />
+                  <span className="font-semibold">{companyData.contact.phone}</span>
+                </a>
+                <a
+                  href={`mailto:${companyData.contact.email}`}
+                  className="inline-flex items-center gap-1.5 hover:text-accent transition-colors"
+                >
+                  <Mail className="w-3.5 h-3.5 shrink-0" />
+                  <span>{companyData.contact.email}</span>
+                </a>
+              </div>
+              <div
+                className={`flex items-center gap-1.5 ${
+                  transparent ? "text-white/85" : "text-muted-foreground"
+                }`}
+              >
+                <MapPin className="w-3.5 h-3.5 shrink-0 text-accent" />
+                <span>
+                  {companyData.address.street}, {companyData.address.zip}{" "}
+                  {companyData.address.city}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2" data-testid="link-home-logo">
           <img
@@ -100,7 +175,7 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.slice(0, 3).map((link) => (
+          {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -122,10 +197,13 @@ export default function Header() {
             className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold"
             data-testid="button-header-apply"
           >
-            <Link href="/karriere#offene-stellen" className="flex items-center gap-2">
-              <Briefcase className="w-4 h-4" />
+            <a
+              href={`mailto:${companyData.contact.email}?subject=Bewerbung`}
+              className="flex items-center gap-2"
+            >
+              <Mail className="w-4 h-4" />
               <span>Jetzt bewerben</span>
-            </Link>
+            </a>
           </Button>
         </div>
 
@@ -257,14 +335,14 @@ export default function Header() {
                   asChild
                   className="w-full h-12 bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-base rounded-xl shadow-lg shadow-black/20"
                 >
-                  <Link
-                    href="/karriere#offene-stellen"
+                  <a
+                    href={`mailto:${companyData.contact.email}?subject=Bewerbung`}
                     onClick={() => setMenuOpen(false)}
                     className="flex items-center justify-center gap-2"
                   >
-                    <Briefcase className="w-5 h-5" />
+                    <Mail className="w-5 h-5" />
                     <span>Jetzt bewerben</span>
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </SheetContent>

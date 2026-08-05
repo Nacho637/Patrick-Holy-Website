@@ -75,22 +75,37 @@ export default function ContactPage() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    setTimeout(() => {
-      console.log({ ...values, file: fileName });
-      setIsSubmitting(false);
-      toast({
-        title: "Nachricht erfolgreich gesendet",
-        description: "Wir melden uns schnellstmöglich bei dir.",
-      });
-      form.reset();
-      setFileName("");
-    }, 1000);
+
+    const body = [
+      `Name: ${values.name}`,
+      `E-Mail: ${values.email}`,
+      values.phone ? `Telefon: ${values.phone}` : null,
+      `Anliegen: ${values.topic}`,
+      "",
+      values.message,
+      fileName ? `\nAnhang (bitte separat senden): ${fileName}` : null,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const mailto = `mailto:${companyData.contact.email}?subject=${encodeURIComponent(
+      `Anfrage: ${values.topic}`,
+    )}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailto;
+
+    setIsSubmitting(false);
+    toast({
+      title: "E-Mail-Programm wird geöffnet",
+      description:
+        "Deine Nachricht wird über dein E-Mail-Programm an uns gesendet. Anhänge bitte ggf. dort manuell hinzufügen.",
+    });
   }
 
   return (
     <div className="w-full">
       {/* Hero */}
-      <section data-hero className="bg-primary text-white py-20 relative">
+      <section data-hero className="bg-primary text-white pt-28 pb-20 md:pt-36 relative">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Kontakt & Bewerbung</h1>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto">
@@ -392,8 +407,8 @@ export default function ContactPage() {
                         )}
                       </Button>
                       <p className="text-xs text-center text-muted-foreground">
-                        Deine Daten werden sicher übertragen und nur zur Bearbeitung deiner Anfrage
-                        verwendet.
+                        Beim Absenden öffnet sich dein E-Mail-Programm mit der vorausgefüllten
+                        Nachricht an {companyData.contact.email}.
                       </p>
                     </form>
                   </Form>

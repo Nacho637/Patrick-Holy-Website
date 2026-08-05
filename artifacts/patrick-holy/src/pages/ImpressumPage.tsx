@@ -34,7 +34,7 @@ export default function ImpressumPage() {
             <h3>Handelsregister:</h3>
             <p>
               Registergericht: Amtsgericht Aschaffenburg<br />
-              Registernummer: HRB [Platzhalter]
+              Registernummer: HRB 6036
             </p>
 
             <h3>Umsatzsteuer-ID:</h3>

@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
   title: string;
@@ -19,16 +20,23 @@ export default function SectionHeader({
   const isCenter = alignment === "center";
 
   return (
-    <div className={`mb-12 md:mb-16 ${isCenter ? "text-center mx-auto" : ""} ${className}`}>
+    <div
+      className={cn(
+        "mb-12 md:mb-16",
+        isCenter && "text-center mx-auto",
+        className,
+      )}
+    >
       {subtitle && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
-          className={`flex items-center gap-3 font-semibold uppercase tracking-wider text-primary mb-4 ${
-            isCenter ? "justify-center" : ""
-          }`}
+          className={cn(
+            "flex items-center gap-3 font-semibold uppercase tracking-wider text-primary mb-4",
+            isCenter && "justify-center",
+          )}
         >
           <span className="w-8 h-1 bg-accent inline-block rounded-full"></span>
           {subtitle}
@@ -49,9 +57,10 @@ export default function SectionHeader({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className={`mt-6 text-lg text-muted-foreground max-w-3xl ${
-            isCenter ? "mx-auto text-center" : ""
-          }`}
+          className={cn(
+            "mt-6 text-lg text-muted-foreground max-w-3xl",
+            isCenter && "mx-auto text-center",
+          )}
         >
           {children}
         </motion.div>
