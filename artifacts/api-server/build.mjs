@@ -14,8 +14,14 @@ async function buildAll() {
   const distDir = path.resolve(artifactDir, "dist");
   await rm(distDir, { recursive: true, force: true });
 
+  // Bundle the Express app (Vercel entry) and the local listen server separately.
+  // Vercel picks root app.mjs → dist/create-app.mjs and must not compile src/*.ts
+  // (workspace TS imports / noEmit caused "Emit skipped" via @vercel/node).
   await esbuild({
-    entryPoints: [path.resolve(artifactDir, "src/index.ts")],
+    entryPoints: [
+      path.resolve(artifactDir, "src/create-app.ts"),
+      path.resolve(artifactDir, "src/local-server.ts"),
+    ],
     platform: "node",
     bundle: true,
     format: "esm",
